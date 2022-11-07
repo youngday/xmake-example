@@ -81,13 +81,13 @@ int main(int argc, char *argv[])
 
   // xtensor_test();
 
-   tcp_client_coro();
-   for(;;){
-    co::sleep(10000);
-   }
-  //  sqlite_orm_app();
+  //  tcp_client_coro();
+  //  for(;;){
+  //   co::sleep(10000);
+  //  }
+    // sqlite_orm_app();
 
- // cppzmq_app();
+   cppzmq_app();
 
   // return app.exec();
 }
