@@ -1,17 +1,26 @@
+set_project("xmake-example")
+set_languages("c++17")
 add_rules("mode.debug", "mode.release")
 -- cmake packages
 -- add_requires("cmake::ZLIB", {system = true})
 add_requires("cmake::LibXml2", {system = true})
+-- add_requires("cmake::libco", {system = true})
+-- add_requires("cmake::coost")
 -- add_requires("cmake::Boost", {system = true,
     -- configs = {components = {"regex", "system"}, presets = {Boost_USE_STATIC_LIB = true}}})
 -- conan packages
 add_requires("conan::zlib 1.2.11", {alias = "zlib", debug = true})
 add_requires("conan::openssl 1.1.1g", {alias = "openssl",
     configs = {options = "OpenSSL:shared=True"}})
-
+add_requires("conan::xpack 1.0.2")  
+add_requires("conan::sqlite_orm 1.7.1")  
+-- add_requires("conan::cppzmq 4.9.0")  
 -- native xmake packages
 add_requires("tbox master", {debug = true})
--- add_requires("zlib >=1.2.11")
+add_requires("yaml-cpp","fmt","libbacktrace","coost") 
+-- add_requires("loguru") 
+add_requires("cppzmq")
+add_requires("eigen")
 
 add_rules("mode.debug", "mode.release")
 
@@ -24,5 +33,12 @@ target("console")
     set_kind("binary")
     add_deps("test")
     add_files("src/*.cpp")
-    add_packages("tbox","conan::zlib", "conan::openssl", "cmake::LibXml2")
-
+    add_includedirs("include")
+    add_headerfiles("include/*.h","include/*.hpp")
+    -- coost package should ahead,libbacktrace behind, or error appear below
+--     error: /usr/bin/ld: /usr/local/lib/libco.a(stack_trace.cc.o): in function `___::log::StackTraceImpl::dump_stack(void*, int)':
+-- /home/youngday/prj-cpp/coost/src/log/stack_trace.cc:134: undefined reference to `backtrace_create_state'
+-- /usr/bin/ld: /home/youngday/prj-cpp/coost/src/log/stack_trace.cc:135: undefined reference to `backtrace_full'
+-- collect2: error: ld returned 1 exit status
+    add_packages("tbox","yaml-cpp","fmt","coost","libbacktrace","eigen","cppzmq","cmake::libco","conan::zlib", "conan::openssl", "conan::xpack::json","conan::sqlite_orm","cmake::LibXml2")
+    add_defines("LOGURU_WITH_STREAMS","LOGURU_USE_FMTLIB")

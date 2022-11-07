@@ -1,3 +1,4 @@
+set_languages("c++17")
 function main(t)
 
     -- freebsd ci is slower
