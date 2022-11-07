@@ -8,14 +8,10 @@ add_requires("conan::openssl 1.1.1g", {alias = "openssl",
     configs = {options = "OpenSSL:shared=True"}})
 add_requires("conan::xpack 1.0.2")  
 add_requires("conan::sqlite_orm 1.7.1")  
--- add_requires("conan::cppzmq 4.9.0")  
 -- native xmake packages
 add_requires("tbox master", {debug = true})
-add_requires("yaml-cpp","fmt","libbacktrace","coost") 
+add_requires("yaml-cpp","fmt","libbacktrace","coost","cppzmq") 
 -- add_requires("loguru") 
-add_requires("cppzmq")
-
-add_rules("mode.debug", "mode.release")
 
 target("test")
     set_kind("static")
