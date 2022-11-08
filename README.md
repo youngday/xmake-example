@@ -11,3 +11,14 @@ xmake f --menu    xmkae gui
 
 https://xrepo.xmake.io/#/packages
 
+## xrepo 
+
+curl：(60) SSL
+
+curl -k https://github.com
+
+## update
+
+xrepo update-repo
+xmake f -c
+xmake
