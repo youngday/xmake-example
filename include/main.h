@@ -11,7 +11,7 @@
 #include <filesystem>
 #include <future>
 
-
+#include "xpack/json.h" // Json包含这个头文件，xml则包含xpack/xml.h
 #include <yaml-cpp/yaml.h>
 
 #include"loguru.hpp"

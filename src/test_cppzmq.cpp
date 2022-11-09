@@ -5,7 +5,6 @@
 
 #include "zmq.hpp"
 #include "zmq_addon.hpp"
-#include "xpack/json.h" // Json包含这个头文件，xml则包含xpack/xml.h
 
 #include "main.h"
 
