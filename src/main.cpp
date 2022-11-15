@@ -34,6 +34,8 @@ int main(int argc, char *argv[])
     // sqlite_orm_app();
 
    cppzmq_app();
-
+   for(;;){
+    co::sleep(10000);
+   }
   // return app.exec();
 }

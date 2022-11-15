@@ -5,9 +5,9 @@ add_rules("mode.debug", "mode.release")
 add_requires("cmake::LibXml2", {system = true})
 add_requires("cmake::OpenCV", {system = true})
 -- conan packages
--- add_requires("conan::xpack 1.0.2", {alias = "xpack",debug = true})
--- add_requires("conan::sqlite_orm 1.7.1", {alias = "sqlite_orm",debug = true})
-
+add_requires("conan::xpack 1.0.2", {alias = "xpack",debug = true})
+add_requires("conan::sqlite_orm 1.7.1", {alias = "sqlite_orm",debug = true})
+-- add_requires("conan::fmt 9.1.0", {alias = "fmt",debug = true})
 -- native xmake packages
 add_requires("tbox master", {debug = true})
 add_requires("openssl", {alias = "openssl",
@@ -29,7 +29,6 @@ target("console")
 
     
     add_packages("cmake::LibXml2","cmake::OpenCV")
-    -- add_packages("conan::xpack","conan::sqlite_orm")  
-    add_packages("tbox","yaml-cpp","fmt","coost","cppzmq","sqlite3")
-
+    add_packages("xpack","sqlite_orm","fmt")  
+    add_packages("tbox","yaml-cpp","coost","cppzmq","sqlite3")
     add_defines("LOGURU_WITH_STREAMS","LOGURU_USE_FMTLIB")
