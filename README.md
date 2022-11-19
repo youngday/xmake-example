@@ -11,7 +11,22 @@ xmake f --menu    xmkae gui
 
 https://xrepo.xmake.io/#/packages
 
-## xrepo 
+
+
+## config
+
+https://xmake.io/mirror/zh-cn/guide/configuration.html
+
+### repo
+
+### gitee
+
+```sh
+export XMAKE_MAIN_REPO=https://gitee.com/xmake-io/xmake-repo.git
+export XMAKE_BINARY_REPO=https://gitee.com/xmake-mirror/build-artifacts.git
+```
+
+### ssl issues
 
 curl：(60) SSL
 
@@ -22,6 +37,16 @@ curl -k https://github.com
 xrepo update-repo
 xmake f -c
 xmake
+
+## find package
+
+```sh
+xmake l find_package fmt
+```
+
+cmake::fmt
+conan::fmt
+fmt
 
 
 ## issues
