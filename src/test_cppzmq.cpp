@@ -21,43 +21,43 @@ void PublisherThread(zmq::context_t *ctx);
 void SubscriberThread1(zmq::context_t *ctx);
 void SubscriberThread2(zmq::context_t *ctx);
 
-void Tojson(void);
+// void Tojson(void);
 
-void Tojson(void)
-{
-    // {"a":23,"b":false,"s":"123","v":[1,2,3],"o":{"xx":0}}
-    Json x = {
-        {"a", 23},
-        {"b", false},
-        {"s", "123"},
-        {"v", {1, 2, 3}},
-        {"o", {{"xx", 0}}},
-    };
+// void Tojson(void)
+// {
+//     // {"a":23,"b":false,"s":"123","v":[1,2,3],"o":{"xx":0}}
+//     Json x = {
+//         {"a", 23},
+//         {"b", false},
+//         {"s", "123"},
+//         {"v", {1, 2, 3}},
+//         {"o", {{"xx", 0}}},
+//     };
 
-    // equal to x
-    Json y = Json()
-                 .add_member("a", 23)
-                 .add_member("b", false)
-                 .add_member("s", "123")
-                 .add_member("v", Json().push_back(1).push_back(2).push_back(3))
-                 .add_member("o", Json().add_member("xx", 0));
+//     // equal to x
+//     Json y = Json()
+//                  .add_member("a", 23)
+//                  .add_member("b", false)
+//                  .add_member("s", "123")
+//                  .add_member("v", Json().push_back(1).push_back(2).push_back(3))
+//                  .add_member("o", Json().add_member("xx", 0));
 
-    x.get("a").as_int();       // 23
-    x.get("s").as_string();    // "123"
-    x.get("s").as_int();       // 123, string -> int
-    x.get("v", 0).as_int();    // 1
-    x.get("v", 2).as_int();    // 3
-    x.get("o", "xx").as_int(); // 0
+//     x.get("a").as_int();       // 23
+//     x.get("s").as_string();    // "123"
+//     x.get("s").as_int();       // 123, string -> int
+//     x.get("v", 0).as_int();    // 1
+//     x.get("v", 2).as_int();    // 3
+//     x.get("o", "xx").as_int(); // 0
 
-    User u;
-    string data = "{\"id\":12345, \"name\":\"xpack\"}";
+//     User u;
+//     string data = "{\"id\":12345, \"name\":\"xpack\"}";
 
-    xpack::json::decode(data, u); // json转结构体
-    LOG_S(INFO) << u.id << ';' << u.name << endl;
+//     xpack::json::decode(data, u); // json转结构体
+//     LOG_S(INFO) << u.id << ';' << u.name << endl;
 
-    string json = xpack::json::encode(u); // 结构体转json
-    LOG_S(INFO) << json << endl;
-}
+//     string json = xpack::json::encode(u); // 结构体转json
+//     LOG_S(INFO) << json << endl;
+// }
 
 void PublisherThread(zmq::context_t *ctx)
 {
