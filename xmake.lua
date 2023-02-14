@@ -15,12 +15,13 @@ add_requires("opencv", {system = true})
 add_requires("tbox master", {debug = true})
 add_requires("openssl", {alias = "openssl",
     configs = {options = "OpenSSL:shared=True"}})
-add_requires("co", {alias = "coost",system = true})    
 add_requires("sqlite3 3.39.0","yaml-cpp 0.7.0","fmt 9.1.0","cppzmq 4.8.1","toml++ 3.2.0","concurrentqueue","xtensor","xtl","xtensor-blas") 
 add_requires("CppLinuxSerial","concurrentqueue","libhv")
 -- add_requires("opencv 4.6.0")
 
 add_defines("LOGURU_WITH_STREAMS","LOGURU_USE_FMTLIB")
+add_links("co")
+add_linkdirs("lib/")
 
 target("test")
     set_kind("static")
@@ -37,32 +38,32 @@ target("console")
     -- add_headerfiles("include/*.h","include/*.hpp")
     add_packages("opencv")
     add_packages("sqlite_orm","fmt")  
-    add_packages("tbox","yaml-cpp","coost","cppzmq","sqlite3")
+    add_packages("tbox","yaml-cpp","cppzmq","sqlite3")
 
 
 target("serial")
     set_kind("binary")
     add_files("src/base/*.cpp","src/serial/FlowControl.cpp")
     add_includedirs("include")
-    add_packages("tbox","yaml-cpp","coost","cppzmq","fmt","CppLinuxSerial")
+    add_packages("tbox","yaml-cpp","cppzmq","fmt","CppLinuxSerial")
 
 target("mpmc_noblock")
     set_kind("binary")
     add_files("src/base/*.cpp","src/mpmc_queue/noblock.cpp")
     add_includedirs("include")
-    add_packages("tbox","yaml-cpp","coost","cppzmq","fmt","concurrentqueue")
+    add_packages("tbox","yaml-cpp","cppzmq","fmt","concurrentqueue")
 
 target("mpmc_block")
     set_kind("binary")
     add_files("src/base/*.cpp","src/mpmc_queue/block.cpp")
     add_includedirs("include")
-    add_packages("tbox","yaml-cpp","coost","cppzmq","fmt","concurrentqueue")
+    add_packages("tbox","yaml-cpp","cppzmq","fmt","concurrentqueue")
 
 target("mpmc_bulk")
     set_kind("binary")
     add_files("src/base/*.cpp","src/mpmc_queue/bulk.cpp")
     add_includedirs("include")
-    add_packages("tbox","yaml-cpp","coost","cppzmq","fmt","concurrentqueue")
+    add_packages("tbox","yaml-cpp","cppzmq","fmt","concurrentqueue")
 
 
 
