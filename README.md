@@ -8,7 +8,9 @@ we add coost as local lib ,libso.a and "include/co" header files.which is compil
 * cpr
 * matplotplusplus
 like matplotlib of python,data analyzer . 
+* rapidcsv
+read datas from csv file,and plot them out. 
 ## example
 
-lock-free concurrentqueue, udp ,tcp ,cppzmq,loguru matplot,
+lock-free concurrentqueue, udp ,tcp ,cppzmq,loguru matplot,csv
 🐞
