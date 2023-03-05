@@ -1,6 +1,5 @@
-#include <chrono>
-#include <thread>
 
+#include "main.h"
 #include "CppLinuxSerial/SerialPort.hpp"
 
 using namespace std::chrono_literals;

@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <string>
 
-using namespace std;
+
 
 constexpr int64_t SEC_US = 1000000;
 constexpr int64_t MIN_US = SEC_US * 60;
@@ -32,7 +32,7 @@ int64_t get_localtime_ms();
 int64_t get_gmtime_s();
 int64_t get_localtime_s();
 
-string gmtime2localstr(int64_t time_us, const string& );
+std::string gmtime2localstr(int64_t time_us, const std::string& );
 int64_t localstr2gmtime(const std::string& s, const std::string&);
 int64_t gmtime_2_time_us(const std::string& s, const std::string&);
   /**

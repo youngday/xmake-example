@@ -8,6 +8,7 @@
 
 #include "main.h"
 
+using std::string;
 struct User
 {
     int id;

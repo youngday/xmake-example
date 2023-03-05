@@ -12,6 +12,7 @@ extern int cppzmq_app();
 int main(int argc, char *argv[])
 {
   auto time_str = mylocal_time();
+  
   filesystem::path folder_path = "./log/";
   filesystem::create_directory(folder_path) ? LOG_S(INFO) << "mkdir sucess." << folder_path << endl : LOG_S(INFO) << "dir exist." << folder_path << endl;
 

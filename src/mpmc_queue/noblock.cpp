@@ -3,7 +3,7 @@
 #include <chrono>
 #include <iostream>
 #include "concurrentqueue/blockingconcurrentqueue.h"
-using namespace std;
+using std::cout,std::endl;
 
 int main()
 {

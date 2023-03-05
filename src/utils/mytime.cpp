@@ -1,8 +1,9 @@
-#include "chrono_time.hpp"
+#include "mytime.hpp"
   /**
    * Generate a UTC ISO8601-formatted timestamp
    * and return as std::string
    */
+   using namespace std;
 std::string gmt_time()
 {
   auto tp_now = std::chrono::system_clock::now();
@@ -28,8 +29,8 @@ std::string mylocal_time()
 //get duration microseconds
 int64_t get_gmtime_us()
 {
-    chrono::system_clock clock;
-    return chrono::duration_cast<chrono::microseconds>(
+    std::chrono::system_clock clock;
+    return std::chrono::duration_cast<std::chrono::microseconds>(
         clock.now().time_since_epoch()).count();
 }
 

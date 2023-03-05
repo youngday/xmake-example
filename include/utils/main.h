@@ -10,31 +10,31 @@
 #include <string>
 #include <filesystem>
 #include <future>
-
+#include <thread>
 #include "xpack/json.h" // Json包含这个头文件，xml则包含xpack/xml.
 
 #include <yaml-cpp/yaml.h>
 
 #include"loguru.hpp"
 #include "co/all.h"
-#include "chrono_time.hpp"
+#include "mytime.hpp"
 
 struct YamlParam
 {
-  string userName;
-  string passWord;
-  string serialNum;
+  std::string userName;
+  std::string passWord;
+  std::string serialNum;
 
-  string pcLocalIP;
-  string pcRemoteIP;
-  string cppLocalIP;
-  string cppRemoteIP;
-  string javaLocalIP;
-  string javaRemoteIP;
-  string PLCIP;
-  string PLCPort;
-  string sendPLCPort;
-  string rcvPLCPort;
+  std::string pcLocalIP;
+  std::string pcRemoteIP;
+  std::string cppLocalIP;
+  std::string cppRemoteIP;
+  std::string javaLocalIP;
+  std::string javaRemoteIP;
+  std::string PLCIP;
+  std::string PLCPort;
+  std::string sendPLCPort;
+  std::string rcvPLCPort;
 
   bool debugPC2;
   bool debugCpp;
