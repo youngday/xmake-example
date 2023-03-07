@@ -20,13 +20,23 @@ int main(int argc, char const *argv[])
     std::string_view library_name = config["library"]["name"].value_or(""sv);
     std::string_view library_author = config["library"]["authors"][0].value_or(""sv);
     int64_t depends_on_cpp_version = config["dependencies"]["cpp"].value_or(0);
+    vector<string> strTest;
+    for (size_t i = 0; i < config["str_array"]["test"].as_array()->size(); i++)
+    {
+         strTest.emplace_back()=config["str_array"]["test"][i].value_or(""sv);//array to vector
+    }
+    for (size_t i = 0; i < strTest.size(); i++)
+    {
+        cout<<"strTest "<<i<<" "<<strTest[i]<<endl;
+    }
+    
+ 
+  
 
-    // modify the data
-    config.insert_or_assign("alternatives", toml::array{
-                                                "cpptoml",
-                                                "toml11",
-                                                "Boost.TOML"});
 
+
+
+    
     // // use a visitor to iterate over heterogenous data
     // config.for_each([](auto &key, auto &value)
     //                 {
@@ -41,12 +51,12 @@ int main(int argc, char const *argv[])
     // }
 
     // re-serialize as TOML
-    std::cout << config << "\n";
+    // std::cout << config << "\n";
 
-    // re-serialize as JSON
-    std::cout << toml::json_formatter{config} << "\n";
+    // // re-serialize as JSON
+    // std::cout << toml::json_formatter{config} << "\n";
 
-    // re-serialize as YAML
-    std::cout << toml::yaml_formatter{config} << "\n";
+    // // re-serialize as YAML
+    // std::cout << toml::yaml_formatter{config} << "\n";
     return 0;
 }
