@@ -20,7 +20,7 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 
 |function|lib|alternate|note|
 |-|-|-|-|
-|frame|coost|boost, asio, libuv|lightweight frame work|
+|frame|coost|boost, asio, libhv|lightweight frame work|
 |argparse|co/flag|argparse, cli++|cmd line param parser|
 |log|loguru|co/log fmtlog glog spdlog|lightweight log|
 |csv|rapidcsv|csv2 |csv parser|
@@ -29,7 +29,7 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
 |udp|co/udp||coost udp with coroutine|
 |tcp|co/tcp||coost tcp with coroutine|
-|http|cpr|httplibcpp|http restful|
+|http|cpr|cpp-httplib|http restful|
 |zero mq|cppzmq||message queue between other language|
 |plot|matplotplusplus|cvplot|plot 2D/3D ,depend on gnuplot|
 
