@@ -16,6 +16,13 @@ add_requires("CppLinuxSerial", "libhv")
 -- add_requires("opencv 4.6.0")
 add_requires("matplotplusplus 1.1.0", "xtensor", "xtl", "xtensor-blas", "rapidcsv 8.50")
 add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
+
+
+-- websocketpp-0.8.2  drogon-v1.8.2 
+-- cmake  uwebsocket 
+
+
+
 -- add_links("co")
 -- add_linkdirs("lib/")
 
