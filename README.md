@@ -32,6 +32,7 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 |http|cpr|cpp-httplib|http restful|
 |zero mq|cppzmq||message queue between other language|
 |plot|matplotplusplus|cvplot|plot 2D/3D ,depend on gnuplot|
+|json|nlohmann_json|co::Json,rapidjson|co::Json output fastring,not std::string,rapidson ,not update often|
 
 
 
