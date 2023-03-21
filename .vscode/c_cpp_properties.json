@@ -1,42 +1,34 @@
-// {
-//   "configurations": [
-//     {
-//       "name": "linux-gcc-x64",
-//       "includePath": [
-//         "${workspaceFolder}/**"
-//       ],
-//       "compilerPath": "/usr/bin/gcc",
-//       "cStandard": "${default}",
-//       "cppStandard": "${default}",
-//       "intelliSenseMode": "linux-gcc-x64",
-//       "compilerArgs": []
-//     }
-//   ],
-//   "version": 4
-// }
 {
-  "env": {
-    "myDefaultIncludePath": ["${workspaceFolder}", "${workspaceFolder}/include"],
-    "myCompilerPath": "/usr/local/bin/gcc-11"
-  },
-  "configurations": [
-    {
-      "name": "linux-gcc-x64",
-      "intelliSenseMode": "linux-gcc-x64",
-      // "includePath": ["${myDefaultIncludePath}", "/another/path"],
-      // "macFrameworkPath": ["/System/Library/Frameworks"],
-      "defines": ["FOO", "BAR=100"],
-      // "forcedInclude": ["${workspaceFolder}/include/config.h"],
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      // "compileCommands": "/path/to/compile_commands.json",
-      "browse": {
-        "path": ["${workspaceFolder}"],
-        "limitSymbolsToIncludedHeaders": true,
-        "databaseFilename": ""
-      }
-    }
-  ],
-  "version": 4
+    "env": {
+        "myDefaultIncludePath": [
+            "${workspaceFolder}",
+            "${workspaceFolder}/include"
+        ],
+        "myCompilerPath": "/usr/local/bin/gcc-11"
+    },
+    "configurations": [
+        {
+            "name": "linux-gcc-x64",
+            "intelliSenseMode": "linux-gcc-x64",
+            "defines": [
+                "FOO",
+                "BAR=100"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/include/concurrentqueue"
+            ]
+        }
+    ],
+    "version": 4
 }
