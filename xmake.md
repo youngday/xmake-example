@@ -4,6 +4,7 @@
 ## xmake install 
 ```sh
 bash <(wget https://xmake.io/shget.text -O -)
+curl -fsSL https://xmake.io/shget.text | bash
 ```
 ## ide
 vscode + xmake + gcc
@@ -48,13 +49,30 @@ curl：(60) SSL
 
 curl -k https://github.com
 
-## update
+## xmake update
+
+xmake update -s dev
+xmake update
+
+or use
+
+bash <(curl -fsSL https://xmake.io/shget.text)
+
+curl -fsSL https://xmake.io/shget.text | bash
+## xrepo update-repo
 
 xrepo update-repo
 xmake f -c
 xmake
 
 ``
+
+## check
+
+$ xmake check clang.tidy --fix
+$ xmake check clang.tidy --fix_errors
+$ xmake check clang.tidy --fix_notes
+
 
 ## end
 
