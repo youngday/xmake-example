@@ -21,6 +21,7 @@ add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
 
 -- add_links("co")
 -- add_linkdirs("lib/")
+-- add_rpathdirs("@loader_path/lib") -- load file path of shared file for debuging   
 add_includedirs("include/concurrentqueue")
 add_packages("tbox", "yaml-cpp", "fmt","coost","libbacktrace","toml++")
 target("test")
