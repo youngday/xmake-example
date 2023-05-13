@@ -9,7 +9,7 @@ add_requires("opencv", {system = true})
 -- conan packages
 -- add_requires("conan::xpack 1.0.2", {alias = "xpack",debug = true})
 -- native xmake packages and make install package in "/usr/local/lib"
-add_requires("tbox master", {debug = true})
+-- add_requires("tbox master", {debug = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
 add_requires("sqlite3 3.39.0", "yaml-cpp 0.7.0", "fmt 9.1.0", "cppzmq 4.8.1", "toml++ 3.3.0","coost 3.0.0","libbacktrace 1.0")
 add_requires("CppLinuxSerial", "libhv","nlohmann_json 3.11.2")
@@ -23,7 +23,7 @@ add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
 -- add_linkdirs("lib/")
 -- add_rpathdirs("@loader_path/lib") -- load file path of shared file for debuging   
 add_includedirs("include/concurrentqueue")
-add_packages("tbox", "yaml-cpp", "fmt","coost","libbacktrace","toml++")
+add_packages("yaml-cpp", "fmt","coost","libbacktrace","toml++")
 target("test")
     set_kind("static")
     add_files("src/test.cpp")
