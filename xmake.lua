@@ -23,6 +23,8 @@ add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
 -- add_linkdirs("lib/")
 -- add_rpathdirs("@loader_path/lib") -- load file path of shared file for debuging   
 add_includedirs("include/concurrentqueue")
+add_includedirs("include/utils")
+add_files("src/utils/*.cpp")
 add_packages("yaml-cpp", "fmt","coost","libbacktrace","toml++")
 target("test")
     set_kind("static")
@@ -35,7 +37,7 @@ target("console")
 
     add_files("src/main.cpp")
     add_files("src/test_cppzmq.cpp")
-    add_files("src/utils/*.cpp")
+    
     add_includedirs("include")
     add_includedirs("include/utils")
     add_includedirs("include/xpack")

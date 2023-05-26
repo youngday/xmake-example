@@ -26,7 +26,8 @@
             },
             "includePath": [
                 "${default}",
-                "${workspaceFolder}/include/concurrentqueue"
+                "${workspaceFolder}/include/concurrentqueue",
+                "${workspaceFolder}/include/utils"
             ]
         }
     ],
