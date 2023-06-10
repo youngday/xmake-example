@@ -11,7 +11,7 @@ add_requires("opencv", {system = true})
 -- native xmake packages and make install package in "/usr/local/lib"
 -- add_requires("tbox master", {debug = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires("sqlite3 3.39.0", "yaml-cpp 0.7.0", "fmt 9.1.0", "cppzmq 4.8.1", "toml++ 3.3.0","coost 3.0.0","libbacktrace 1.0")
+add_requires("sqlite3 3.39.0", "yaml-cpp 0.7.0", "fmt 10.0.0", "cppzmq 4.8.1", "toml++ 3.3.0","coost 3.0.0","libbacktrace 1.0")
 add_requires("CppLinuxSerial", "libhv","nlohmann_json 3.11.2")
 -- add_requires("opencv 4.6.0")
 add_requires("matplotplusplus 1.1.0", "xtensor", "xtl", "xtensor-blas", "rapidcsv 8.50")
