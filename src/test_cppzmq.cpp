@@ -9,11 +9,12 @@
 #include "main.h"
 
 using std::string;
+using njson = nlohmann::json;
+using namespace nlohmann::literals;
 struct User
 {
     int id;
     string name;
-    XPACK(O(id, name)); // 添加宏定义XPACK在结构体定义结尾
 };
 
 int cppzmq_app(void);
@@ -21,44 +22,6 @@ void PublisherThread(zmq::context_t *ctx);
 void PublisherThread(zmq::context_t *ctx);
 void SubscriberThread1(zmq::context_t *ctx);
 void SubscriberThread2(zmq::context_t *ctx);
-
-// void Tojson(void);
-
-// void Tojson(void)
-// {
-//     // {"a":23,"b":false,"s":"123","v":[1,2,3],"o":{"xx":0}}
-//     Json x = {
-//         {"a", 23},
-//         {"b", false},
-//         {"s", "123"},
-//         {"v", {1, 2, 3}},
-//         {"o", {{"xx", 0}}},
-//     };
-
-//     // equal to x
-//     Json y = Json()
-//                  .add_member("a", 23)
-//                  .add_member("b", false)
-//                  .add_member("s", "123")
-//                  .add_member("v", Json().push_back(1).push_back(2).push_back(3))
-//                  .add_member("o", Json().add_member("xx", 0));
-
-//     x.get("a").as_int();       // 23
-//     x.get("s").as_string();    // "123"
-//     x.get("s").as_int();       // 123, string -> int
-//     x.get("v", 0).as_int();    // 1
-//     x.get("v", 2).as_int();    // 3
-//     x.get("o", "xx").as_int(); // 0
-
-//     User u;
-//     string data = "{\"id\":12345, \"name\":\"xpack\"}";
-
-//     xpack::json::decode(data, u); // json转结构体
-//     LOG_S(INFO) << u.id << ';' << u.name << endl;
-
-//     string json = xpack::json::encode(u); // 结构体转json
-//     LOG_S(INFO) << json << endl;
-// }
 
 void PublisherThread(zmq::context_t *ctx)
 {
@@ -71,33 +34,33 @@ void PublisherThread(zmq::context_t *ctx)
     // Give the subscribers a chance to connect, so they don't lose any messages
     std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
-
     LOG_S(INFO) << "pub" << endl;
-        // Tojson();
-        User u;
-        string data = "{\"id\":12345, \"name\":\"xpack\"}";
+    // Tojson();
+    User u;
+    string data = R"({\"id\":12345, \"name\":\"test\"})";
+    LOG_S(INFO) << "data json:" << data;
 
-        xpack::json::decode(data, u); // json转结构体
-        LOG_S(INFO) << u.id << ';' << u.name << endl; 
-
-        int cnt=0;
+    int cnt = 0;
     while (true)
     {
         cnt++;
-        if(cnt>100){
-            cnt=0;
+        if (cnt > 100)
+        {
+            cnt = 0;
         }
-        u.id=1230+cnt;
+        u.id = 1230 + cnt;
+        u.name="testname";
 
-  
-        string json = xpack::json::encode(u); // 结构体转json
-        LOG_S(INFO) << "json:" << json << endl;
-        LOG_S(INFO) << "json size:" << json.size() << endl;
+        njson jstr;
+        jstr["id"] = u.id;
+        jstr["name"] = u.name;
+        LOG_S(INFO) << "json:" << jstr.dump() << endl;
+        LOG_S(INFO) << "json size:" << jstr.dump().size() << endl;
 
 #define json_max_len 255
         char str_test[json_max_len];
-        strncpy(str_test, json.c_str(), json.size()); // "a lo"
-        str_test[json.size()] = '\0';                 // putting terminating character at the end
+        strncpy(str_test, jstr.dump().c_str(), jstr.dump().size()); // "a lo"
+        str_test[jstr.dump().size()] = '\0';                        // putting terminating character at the end
 
         //  Write three messages, each with an envelope and content
         // publisher.send(zmq::str_buffer("A"), zmq::send_flags::sndmore);
@@ -106,8 +69,8 @@ void PublisherThread(zmq::context_t *ctx)
         // publisher.send(zmq::str_buffer("Message in B envelope"));
         // publisher.send(zmq::str_buffer("C"), zmq::send_flags::sndmore);
         // publisher.send(zmq::str_buffer(str_test));
-        //without envlope ,to plotjuggler
-         publisher.send(zmq::str_buffer(str_test));
+        // without envlope ,to plotjuggler
+        publisher.send(zmq::str_buffer(str_test));
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
@@ -133,7 +96,7 @@ void SubscriberThread1(zmq::context_t *ctx)
         assert(*result == 1);
 
         std::cout << "Thread2: [" << recv_msgs[0].to_string() << "] "
-                 << std::endl;
+                  << std::endl;
     }
 }
 
@@ -156,8 +119,8 @@ void SubscriberThread2(zmq::context_t *ctx)
         assert(result && "recv failed");
         assert(*result == 1);
 
-         LOG_S(INFO) << "Thread3: [" << recv_msgs[0].to_string()
-                << std::endl;
+        LOG_S(INFO) << "Thread3: [" << recv_msgs[0].to_string()
+                    << std::endl;
     }
 }
 

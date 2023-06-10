@@ -7,7 +7,7 @@ add_requires("opencv", {system = true})
 -- cmake packages
 -- add_requires("cmake::OpenCV", {system = true})
 -- conan packages
--- add_requires("conan::xpack 1.0.2", {alias = "xpack",debug = true})
+-- add_requires("conan::xxx 1.0.2", {alias = "xxx",debug = true})
 -- native xmake packages and make install package in "/usr/local/lib"
 -- add_requires("tbox master", {debug = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
@@ -25,7 +25,7 @@ add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
 add_includedirs("include/concurrentqueue")
 add_includedirs("include/utils")
 add_files("src/utils/*.cpp")
-add_packages("yaml-cpp", "fmt","coost","libbacktrace","toml++")
+add_packages("yaml-cpp", "fmt","coost","libbacktrace","toml++","nlohmann_json")
 target("test")
     set_kind("static")
     add_files("src/test.cpp")
@@ -40,7 +40,6 @@ target("console")
     
     add_includedirs("include")
     add_includedirs("include/utils")
-    add_includedirs("include/xpack")
     add_packages("opencv","cppzmq")
 
 -- flag argparse cli  cmdline

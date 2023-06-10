@@ -24,7 +24,6 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 |argparse|co/flag|argparse, cli++|cmd line param parser|
 |log|loguru|co/log fmtlog glog spdlog|lightweight log|
 |csv|rapidcsv|csv2 |csv parser|
-|struct|xpack| |struct to json packer|
 |queue|concurrentqueue|mpmcqueue|lock-free concurrent queue|
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
 |udp|co/udp||coost udp with coroutine|
