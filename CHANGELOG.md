@@ -1,4 +1,6 @@
 # CHANGELOG
+## 6.12 2023
+add fmt lib ,delete xpack,use nlonmann json stl
 ## 3.07 2023
 add toml config ,modern config protocol.
 ## 3.06 2023
