@@ -1,6 +1,8 @@
+#include <chrono>
+#include <thread>
 
-#include "main.h"
 #include "CppLinuxSerial/SerialPort.hpp"
+#include "main.hpp"
 
 using namespace std::chrono_literals;
 using namespace mn::CppLinuxSerial;
@@ -8,8 +10,7 @@ using namespace mn::CppLinuxSerial;
 int main() {
     // This example relies on a serial device which echos serial data at 9600 baud, 8n1.
     std::cout << "FlowControll.cpp::main() called." << std::endl;
-    //dev/ttyACM0,
-    SerialPort serialPort("/dev/ttyUSB0", BaudRate::B_9600, NumDataBits::EIGHT, Parity::NONE, NumStopBits::ONE, HardwareFlowControl::ON, SoftwareFlowControl::OFF);
+    SerialPort serialPort("/dev/ttyACM0", BaudRate::B_9600, NumDataBits::EIGHT, Parity::NONE, NumStopBits::ONE, HardwareFlowControl::ON, SoftwareFlowControl::OFF);
     serialPort.SetTimeout(1000); // Block when reading for 1000ms
 
 	serialPort.Open();

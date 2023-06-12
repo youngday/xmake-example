@@ -3,7 +3,7 @@
 #include "zmq.hpp"
 #include "zmq_addon.hpp"
 
-#include "main.h"
+#include "main.hpp"
 
 using std::string;
 using njson = nlohmann::json;

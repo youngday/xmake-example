@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.hpp"
 
 using std::cout, std::endl, std::string, std::this_thread::sleep_for;
 using namespace std::chrono_literals;

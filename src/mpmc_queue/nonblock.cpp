@@ -5,7 +5,7 @@
 #include "blockingconcurrentqueue.h"
 #include "concurrentqueue.h"
 #include "pthread.h"
-#include "main.h"
+#include "main.hpp"
 using std::cout, std::endl;
 
 using namespace std;
@@ -14,11 +14,12 @@ int main(int argc, char *argv[])
 
     auto time_str = mylocal_time();
 
+    loguru::init(argc, argv);
     filesystem::path folder_path = "./log/";
     filesystem::create_directory(folder_path) ? LOG_S(INFO) << "mkdir sucess." << folder_path << endl : LOG_S(INFO) << "dir exist." << folder_path << endl;
 
     string logfilename = "log/everything-" + time_str + ".log";
-    loguru::init(argc, argv);
+
     loguru::add_file(logfilename.c_str(), loguru::Append,
                      loguru::Verbosity_MAX); // Verbosity_INFO  Verbosity_MAX
     // Only log INFO, WARNING, ERROR and FATAL to "latest_readable.log":

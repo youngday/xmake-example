@@ -1,10 +1,11 @@
 #include <toml++/toml.h>
 #include <iostream>
-#include "main.h"
+#include "main.hpp"
 using namespace std;
 int main(int argc, char *argv[])
 {
       auto time_str = mylocal_time();
+
 
     filesystem::path folder_path = "./log/";
     filesystem::create_directory(folder_path) ? LOG_S(INFO) << "mkdir sucess." << folder_path << endl : LOG_S(INFO) << "dir exist." << folder_path << endl;
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
     loguru::add_file(logfilename.c_str(), loguru::Truncate,
                      loguru::Verbosity_INFO);
     LOG_S(INFO) << fmt::format("Starting at {}!\n", time_str);
+
 
     toml::table config;
     try

@@ -13,20 +13,23 @@ add_rules("mode.debug", "mode.release")
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
 add_requires( "yaml-cpp 0.7.0", "fmt 9.1.0", "cppzmq 4.8.1", "toml++ 3.3.0","coost 3.0.0","libbacktrace 1.0")
 add_requires( "libhv","nlohmann_json 3.11.2")
--- add_requires("CppLinuxSerial", "rapidcsv 8.50")
+add_requires("rapidcsv 8.50")
+-- add_requires( "rapidcsv 8.50")
 -- add_requires("opencv 4.6.0","sqlite3 3.39.0")
 add_requires("matplotplusplus 1.1.0")
 
 add_requires("xtensor 0.24.3","xtl 0.7")
-add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
+-- add_defines("LOGURU_WITH_STREAMS")
 -- websocketpp-0.8.2  drogon-v1.8.2 
 -- cmake  uwebsocket 
 -- add_links("co")
 -- add_linkdirs("lib/")
 -- add_rpathdirs("@loader_path/lib") -- load file path of shared file for debuging   
 add_includedirs("include/concurrentqueue")
-add_packages("tbox", "yaml-cpp", "fmt","coost","libbacktrace","toml++")
--- add_packages("xtensor ","CppLinuxSerial")
+add_includedirs("include/utils")
+add_packages("tbox", "yaml-cpp", "fmt","coost","libbacktrace","toml++","nlohmann_json")
+add_files("src/utils/*")
+
 target("test")
     set_kind("static")
     add_files("src/test.cpp")
@@ -58,9 +61,11 @@ target("toml_config")
 
 target("serial")
     set_kind("binary")
+    add_linkdirs("lib")
+    add_links("CppLinuxSerial")
     add_files("src/serial/FlowControl.cpp")
-    add_includedirs("include", "include/utils")
-    add_packages("CppLinuxSerial")
+    add_includedirs("include", "include/utils","include/CppLinuxSerial")
+
 -- noblock mpmc_block mpmc_bulk
 target("mpmc_nonblock")
     set_kind("binary")

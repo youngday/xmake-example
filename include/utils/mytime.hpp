@@ -23,26 +23,26 @@ constexpr int64_t MIN_S = SEC_S * 60;
 constexpr int64_t HOUR_S = MIN_S * 60;
 constexpr int64_t DAY_S = HOUR_S * 24;
 
-int64_t get_gmtime_us();
-int64_t get_localtime_us();
+extern int64_t get_gmtime_us();
+extern int64_t get_localtime_us();
 
-int64_t get_gmtime_ms();
-int64_t get_localtime_ms();
+extern int64_t get_gmtime_ms();
+extern int64_t get_localtime_ms();
 
-int64_t get_gmtime_s();
-int64_t get_localtime_s();
+extern int64_t get_gmtime_s();
+extern int64_t get_localtime_s();
 
-std::string gmtime2localstr(int64_t time_us, const std::string& );
-int64_t localstr2gmtime(const std::string& s, const std::string&);
-int64_t gmtime_2_time_us(const std::string& s, const std::string&);
+extern std::string gmtime2localstr(int64_t time_us, const std::string& );
+extern int64_t localstr2gmtime(const std::string& s, const std::string&);
+extern int64_t gmtime_2_time_us(const std::string& s, const std::string&);
   /**
    * Generate a local time
    * and return as std::string
    */
-std::string mylocal_time();
+extern std::string mylocal_time();
   /**
    * Generate a UTC ISO8601-formatted timestamp
    * and return as std::string
    */
-std::string gmt_time();
+extern std::string gmt_time();
 

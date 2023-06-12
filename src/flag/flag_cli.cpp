@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.hpp"
 
 DEF_bool(btest,false,"bool test",b);
 DEF_string(stest, "hello", "xxx",s);
