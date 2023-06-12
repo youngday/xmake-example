@@ -2,7 +2,9 @@
     "env": {
         "myDefaultIncludePath": [
             "${workspaceFolder}",
-            "${workspaceFolder}/include"
+            "${workspaceFolder}/include",
+            "~/.xmake/packages/n/nlohmann_json/v3.11.2/d0ab6439a26046eab271bd900a8ea21b/include",
+            "~/.xmake/packages"
         ],
         "myCompilerPath": "/usr/local/bin/gcc-11"
     },
@@ -27,7 +29,9 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/include/concurrentqueue",
-                "${workspaceFolder}/include/utils"
+                "${workspaceFolder}/include/utils",
+                "~/.xmake/packages",
+                "~/.xmake/packages/n/nlohmann_json/v3.11.2/d0ab6439a26046eab271bd900a8ea21b/include"
             ]
         }
     ],
