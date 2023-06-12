@@ -1,20 +1,29 @@
 # xmake-example
 
 ## local dependent packages
+
 wei get from github and cmake or xmake ,and installed.
+
 * cpplinuxserial
 * coost with latest source code ,also can from xmake ,v3.0.0
 * gnuplot ,apt install .
+
 ## xmake package
+
 * cpr
 * matplotplusplus
-like matplotlib of python,data analyzer . 
+like matplotlib of python,data analyzer .
 * rapidcsv
-read datas from csv file,and plot them out. 
+read datas from csv file,and plot them out.
+
 ## example
+
 ### coost example
+
 udp ,tcp,flag_cli
-### other examples 
+
+### other examples
+
 lock-free concurrentqueue, cppzmq,loguru matplot,csv
 🐞
 
@@ -24,7 +33,6 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 |argparse|co/flag|argparse, cli++|cmd line param parser|
 |log|loguru|co/log fmtlog glog spdlog|lightweight log|
 |csv|rapidcsv|csv2 |csv parser|
-|struct|xpack| |struct to json packer|
 |queue|concurrentqueue|mpmcqueue|lock-free concurrent queue|
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
 |udp|co/udp||coost udp with coroutine|
@@ -33,6 +41,4 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 |zero mq|cppzmq||message queue between other language|
 |plot|matplotplusplus|cvplot|plot 2D/3D ,depend on gnuplot|
 |json|nlohmann_json|co::Json,rapidjson|co::Json output fastring,not std::string,rapidson ,not update often|
-
-
-
+|format|fmt|cout|print vector directly,with LOG_S(INFO)<< fmt::format("vector data:{}",data),#include "fmt/core.h",#include "fmt/ranges.h"|
