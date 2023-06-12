@@ -2,27 +2,30 @@ set_project("xmake-example")
 set_languages("c++17")
 add_rules("mode.debug", "mode.release")
 -- apt packages
--- add_requires("apt::xxx", {system = true})
-add_requires("opencv", {system = true})
+-- add_requires("apt::libxtensor-dev", {system = true})
+-- add_requires("opencv", {system = true})
 -- cmake packages
--- add_requires("cmake::OpenCV", {system = true})
+-- add_requires("cmake::xtensor", {system = true})
 -- conan packages
 -- add_requires("conan::xpack 1.0.2", {alias = "xpack",debug = true})
 -- native xmake packages and make install package in "/usr/local/lib"
 add_requires("tbox master", {debug = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires("sqlite3 3.39.0", "yaml-cpp 0.7.0", "fmt 9.1.0", "cppzmq 4.8.1", "toml++ 3.3.0","coost 3.0.0","libbacktrace 1.0")
-add_requires("CppLinuxSerial", "libhv","nlohmann_json 3.11.2")
--- add_requires("opencv 4.6.0")
-add_requires("matplotplusplus 1.1.0", "xtensor", "xtl", "xtensor-blas", "rapidcsv 8.50")
+add_requires( "yaml-cpp 0.7.0", "fmt 9.1.0", "cppzmq 4.8.1", "toml++ 3.3.0","coost 3.0.0","libbacktrace 1.0")
+add_requires( "libhv","nlohmann_json 3.11.2")
+-- add_requires("opencv 4.6.0","CppLinuxSerial", "rapidcsv 8.50","xtl")
+-- add_requires("sqlite3 3.39.0")
+add_requires("matplotplusplus 1.1.0")
+
+add_requires("xtensor 0.24.3","xtl 0.7")
 add_defines("LOGURU_WITH_STREAMS", "LOGURU_USE_FMTLIB")
 -- websocketpp-0.8.2  drogon-v1.8.2 
 -- cmake  uwebsocket 
-
 -- add_links("co")
 -- add_linkdirs("lib/")
 add_includedirs("include/concurrentqueue")
 add_packages("tbox", "yaml-cpp", "fmt","coost","libbacktrace","toml++")
+add_packages("xtensor ")
 target("test")
     set_kind("static")
     add_files("src/test.cpp")
@@ -37,7 +40,8 @@ target("console")
     add_files("src/utils/*.cpp")
     add_includedirs("include")
     add_includedirs("include/utils")
-    add_includedirs("include/xpack")
+    -- add_includedirs("include/xtl")
+    -- add_includedirs("include/xtensor")
     add_packages("opencv","cppzmq")
 
 -- flag argparse cli  cmdline
