@@ -28,7 +28,7 @@ xmake install --admin
 ```
 ## xmake cli
 
-xmake f --menu    xmkae gui
+xmake f --menu    xmake gui
 
 ## config
 

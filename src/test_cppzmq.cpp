@@ -46,7 +46,7 @@ void PublisherThread(zmq::context_t *ctx)
             cnt = 0;
         }
         u.id = 1230 + cnt;
-        u.name="testname";
+        u.name = "testname";
 
         njson jstr;
         jstr["id"] = u.id;
@@ -54,10 +54,17 @@ void PublisherThread(zmq::context_t *ctx)
         LOG_S(INFO) << "json:" << jstr.dump() << endl;
         LOG_S(INFO) << "json size:" << jstr.dump().size() << endl;
 
-#define json_max_len 255
-        char str_test[json_max_len];
-        strncpy(str_test, jstr.dump().c_str(), jstr.dump().size()); // "a lo"
-        str_test[jstr.dump().size()] = '\0';                        // putting terminating character at the end
+        // send string
+        string msg = jstr.dump();
+        zmq::message_t message(msg.length());
+        memcpy(message.data(), msg.c_str(), msg.length());
+        publisher.send(message,zmq::send_flags::dontwait);
+
+        // send char[]
+        //  #define json_max_len 255
+        //          char str_test[json_max_len];
+        //          strncpy(str_test, jstr.dump().c_str(), jstr.dump().size()); // "a lo"
+        //          str_test[jstr.dump().size()] = '\0';                        // putting terminating character at the end
 
         //  Write three messages, each with an envelope and content
         // publisher.send(zmq::str_buffer("A"), zmq::send_flags::sndmore);
@@ -67,7 +74,7 @@ void PublisherThread(zmq::context_t *ctx)
         // publisher.send(zmq::str_buffer("C"), zmq::send_flags::sndmore);
         // publisher.send(zmq::str_buffer(str_test));
         // without envlope ,to plotjuggler
-        publisher.send(zmq::str_buffer(str_test));
+        // publisher.send(zmq::str_buffer(str_test));
 
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }

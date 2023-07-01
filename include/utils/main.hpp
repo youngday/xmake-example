@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MAIN_HPP
+#define MAIN_HPP
 
 #include <memory>
 #include <iostream>
@@ -37,9 +37,7 @@ struct YamlParam
   std::string sendPLCPort;
   std::string rcvPLCPort;
 
-  bool debugPC2;
-  bool debugCpp;
-  bool debugJava;
+
 };
 
-#endif // MAIN_H
+#endif // MAIN_HPP
