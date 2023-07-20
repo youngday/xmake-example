@@ -1,4 +1,5 @@
 #include "main.hpp"
+#include "client_test.hpp"
 
 DEF_string(ip, "127.0.0.1", "server ip");
 DEF_int32(port, 9988, "server port");
@@ -114,7 +115,10 @@ int tcp_client_coro(int argc, char** argv) {
             go(client_with_pool);
         }
     } else {
-        go(client_fun);
+        // go(client_fun);
+         go(client_test::init);
+        // client_test mytest;
+        // go(mytest.init);
     }
 
     sleep::sec(2);
