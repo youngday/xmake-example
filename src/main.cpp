@@ -5,10 +5,10 @@ using namespace std;
 
 extern int folderTest();
 extern int tcp_client();
-extern int tcp_client_coro();
 // extern int sqlite_orm_app();
 extern int xtensor_test();
 extern int cppzmq_app();
+extern int tcp_client_coro(int argc, char** argv);
 
 int main(int argc, char *argv[])
 {
@@ -26,16 +26,17 @@ int main(int argc, char *argv[])
   loguru::add_file(logfilename.c_str(), loguru::Truncate,
                    loguru::Verbosity_INFO);
   LOG_S(INFO) << fmt::format("Starting at {}!\n", time_str);
+    LOG_S(INFO) << std::format("Starting at {}!\n", time_str);
 
   // xtensor_test();
 
-  //  tcp_client_coro();
+   tcp_client_coro(argc, argv);
   //  for(;;){
   //   co::sleep(10000);
   //  }
     // sqlite_orm_app();
 
-   cppzmq_app();
+  //  cppzmq_app();
    for(;;){
     co::sleep(10000);
    }

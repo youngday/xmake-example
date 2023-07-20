@@ -36,6 +36,12 @@ https://xmake.io/mirror/zh-cn/guide/configuration.html
 
 ### repo
 
+https://xmake.io/#/package/remote_package?id=manual-download
+
+```sh
+ xmake g --pkg_searchdirs="~/lib"
+```
+
 ### gitee
 
 ```sh
@@ -59,6 +65,7 @@ or use
 bash <(curl -fsSL https://xmake.io/shget.text)
 
 curl -fsSL https://xmake.io/shget.text | bash
+
 ## xrepo update-repo
 
 xrepo update-repo
@@ -72,6 +79,13 @@ xmake
 $ xmake check clang.tidy --fix
 $ xmake check clang.tidy --fix_errors
 $ xmake check clang.tidy --fix_notes
+
+## qt path
+
+$ xmake f --qt=/home/xxx/qtsdk
+或者设置到全局路径，避免每次编译切换都要配置一遍：
+$ xmake g --qt=/home/xxx/qtsdk
+
 
 
 ## end

@@ -3,9 +3,11 @@
 ## local dependent packages
 
 wei get from github and cmake or xmake ,and installed.
+  xmake install --admin 
+  at /usr/local/
 
 * cpplinuxserial
-* coost with latest source code ,also can from xmake ,v3.0.0
+* coost with latest source code
 * gnuplot ,apt install .
 
 ## xmake package

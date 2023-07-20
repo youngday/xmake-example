@@ -18,6 +18,7 @@
 #include "co/all.h"
 #include "mytime.hpp"
 #include "nlohmann/json.hpp"
+#include <iostream>
 #include <fmt/core.h>
 #include <fmt/ranges.h>
 struct YamlParam
@@ -36,8 +37,5 @@ struct YamlParam
   std::string PLCPort;
   std::string sendPLCPort;
   std::string rcvPLCPort;
-
-
 };
-
 #endif // MAIN_HPP
