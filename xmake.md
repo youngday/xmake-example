@@ -76,17 +76,19 @@ xmake
 
 ## check
 
-$ xmake check clang.tidy --fix
-$ xmake check clang.tidy --fix_errors
-$ xmake check clang.tidy --fix_notes
+xmake check clang.tidy --fix
+xmake check clang.tidy --fix_errors
+xmake check clang.tidy --fix_notes
 
-## qt path
+## qtpath
 
 $ xmake f --qt=/home/xxx/qtsdk
 或者设置到全局路径，避免每次编译切换都要配置一遍：
 $ xmake g --qt=/home/xxx/qtsdk
 
+## local rep
 
+xmake g --pkg_searchdirs=/xxx
 
 ## end
 
