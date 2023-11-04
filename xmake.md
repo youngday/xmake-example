@@ -104,6 +104,7 @@ xmake g --pkg_searchdirs=/xxx
 -- native xmake packages and make install package in "/usr/local/lib"
 -- add_requires("tbox master", {debug = true})
 
+xmake g --pkg_searchdirs=/xxx
 
 ```
 
