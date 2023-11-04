@@ -76,18 +76,35 @@ xmake
 
 ## check
 
-$ xmake check clang.tidy --fix
-$ xmake check clang.tidy --fix_errors
-$ xmake check clang.tidy --fix_notes
+xmake check clang.tidy --fix
+xmake check clang.tidy --fix_errors
+xmake check clang.tidy --fix_notes
 
-## qt path
+## qtpath
 
 $ xmake f --qt=/home/xxx/qtsdk
 或者设置到全局路径，避免每次编译切换都要配置一遍：
 $ xmake g --qt=/home/xxx/qtsdk
 
+## local rep
+
+xmake g --pkg_searchdirs=/xxx
+
+##  other package
+
+```lua
+
+-- apt packages
+-- add_requires("apt::libxtensor-dev", {system = true})
+-- add_requires("opencv", {system = true})
+-- cmake packages
+-- add_requires("cmake::xtensor", {system = true})
+-- conan packages
+-- add_requires("conan::xxx 1.0.2", {alias = "xxx",debug = true})
+-- native xmake packages and make install package in "/usr/local/lib"
+-- add_requires("tbox master", {debug = true})
 
 
-## end
+```
 
-🐞
+

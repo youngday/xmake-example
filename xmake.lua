@@ -1,34 +1,24 @@
 set_project("xmake-example")
 set_languages("c++20")
 add_rules("mode.debug", "mode.release")
--- apt packages
--- add_requires("apt::libxtensor-dev", {system = true})
--- add_requires("opencv", {system = true})
--- cmake packages
--- add_requires("cmake::xtensor", {system = true})
--- conan packages
--- add_requires("conan::xxx 1.0.2", {alias = "xxx",debug = true})
--- native xmake packages and make install package in "/usr/local/lib"
--- add_requires("tbox master", {debug = true})
 
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.7.0", "fmt 10.0.0", "cppzmq 4.10.0", "toml++ 3.3.0","coost ")
-add_requires( "libhv","nlohmann_json 3.11.2")
-add_requires("rapidcsv 8.50")
+add_requires( "yaml-cpp 0.7.0", "fmt 10.0.0", "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1")
+add_requires("nlohmann_json 3.11.2")
+-- add_requires("rapidcsv")
 -- add_requires("opencv 4.6.0","sqlite3 3.39.0")
-add_requires("matplotplusplus 1.1.0")
+add_requires("matplotplusplus 1.2.0")
 add_requires("xtensor 0.24.3","xtl 0.7")
+add_requires("drogon 1.8.2")
 -- add_defines("LOGURU_WITH_STREAMS")
--- websocketpp-0.8.2  drogon-v1.8.2 
--- cmake  uwebsocket 
--- add_links("co")
 -- add_linkdirs("lib/")
 -- add_rpathdirs("@loader_path/lib") -- load file path of shared file for debuging   
 
-add_includedirs("include", "include/utils")
+add_includedirs("include","src/utils", "include/utils")
 add_includedirs("include/concurrentqueue")
+
 add_packages("yaml-cpp", "fmt","coost","toml++","nlohmann_json")
-add_files("src/utils/*")
+add_files("src/utils/*.cpp")
 
 
 target("test")
@@ -75,7 +65,7 @@ target("matplot")
 target("matplotcsv")
     set_kind("binary")
     add_files("src/plot/plot_csv.cpp")
-    add_packages( "matplotplusplus", "rapidcsv")
+    add_packages( "matplotplusplus")
 target("json")
     set_kind("binary")
     add_files("src/json/json.cpp")
@@ -84,3 +74,7 @@ target("async")
     set_kind("binary")
     add_files("src/async/async.cpp")
     add_packages("nlohmann_json")
+target("http_file_upload")
+    set_kind("binary")
+    add_files("src/http/file_upload/file_upload.cc")
+    add_packages("drogon")
