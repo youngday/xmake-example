@@ -108,4 +108,12 @@ xmake g --pkg_searchdirs=/xxx
 
 ```
 
+## lib
+
+```lua
+-- add_defines("LOGURU_WITH_STREAMS")
+-- add_linkdirs("lib/")
+-- add_rpathdirs("@loader_path/lib") -- load file path of shared file for debuging   
+
+```
 
