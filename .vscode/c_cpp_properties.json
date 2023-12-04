@@ -1,42 +1,36 @@
 {
-    "env": {
-        "myDefaultIncludePath": [
-            "${workspaceFolder}",
-            "${workspaceFolder}/include",
-            "~/.xmake/packages/n/nlohmann_json/v3.11.2/d0ab6439a26046eab271bd900a8ea21b/include",
-            "~/.xmake/packages/c/coost/v3.0.0/e477bba71d244fb991955f2e89d7e5fb/include",
-            "~/.xmake/packages"
-        ],
-        "myCompilerPath": "/usr/local/bin/gcc-11"
-    },
-    "configurations": [
-        {
-            "name": "Linux",
-            "intelliSenseMode": "linux-gcc-x64",
-            "defines": [
-                "FOO",
-                "BAR=100"
-            ],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "browse": {
-                "path": [
-                    "${workspaceFolder}"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            },
-            "includePath": [
-                "${default}",
-                "${workspaceFolder}/include/concurrentqueue",
-                "${workspaceFolder}/include/utils",
-                "~/.xmake/packages",
-                "~/.xmake/packages/n/nlohmann_json/v3.11.2/d0ab6439a26046eab271bd900a8ea21b/include",
-                "~/.xmake/packages/c/coost/v3.0.0/e477bba71d244fb991955f2e89d7e5fb/include",
-                "/usr/local/include/eigen3"
-            ]
-        }
+  "env": {
+    "myDefaultIncludePath": [
+      "${workspaceFolder}",
+      "${workspaceFolder}/include",
+      "~/.xmake/packages/n/nlohmann_json/v3.11.2/d0ab6439a26046eab271bd900a8ea21b/include",
+      "~/.xmake/packages/c/coost/v3.0.0/e477bba71d244fb991955f2e89d7e5fb/include",
+      "~/.xmake/packages"
     ],
-    "version": 4
+    "myCompilerPath": "/usr/local/bin/gcc-11"
+  },
+  "configurations": [
+    {
+      "name": "linux-gcc-x64",
+      "intelliSenseMode": "linux-gcc-x64",
+      "defines": [
+        "FOO",
+        "BAR=100"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "browse": {
+        "path": [
+          "${workspaceFolder}"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+      },
+      "includePath": [
+        "${workspaceFolder}/**"
+      ]
+    }
+  ],
+  "version": 4
 }
