@@ -1,15 +1,12 @@
-#include "quill/Quill.h"
-#include "quill/filters/FilterBase.h"
-#include <iostream>
-#include <main.hpp>
-#include <toml++/toml.h>
-
+#include "log.hpp"
 
 using std::cout, std::endl, std::string;
 
+// inline quill::Logger *logger;
+void quill_init(quill::Logger *logger);
 
 
-void quill_init_test(quill::Logger *logger) {
+void quill_init(quill::Logger *logger) {
 
   auto time_str = mylocal_time();
   std::filesystem::path folder_path = "./log_quil/";
@@ -65,4 +62,3 @@ void quill_init_test(quill::Logger *logger) {
   LOG_CRITICAL(logger, "This is a log critical example {}", 11);
 }
 
-int main() { quill_init_test(logger); } // main

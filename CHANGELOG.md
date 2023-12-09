@@ -1,4 +1,6 @@
 # CHANGELOG
+## 12.9 2023
+add quill log lib ,to replace loguru.
 ## 6.12 2023
 add fmt lib ,delete xpack,use nlonmann json stl
 ## 3.07 2023

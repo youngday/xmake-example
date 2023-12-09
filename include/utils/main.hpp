@@ -1,27 +1,29 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
-#include <memory>
-#include <iostream>
-#include <sstream>
 #include <cstdlib>
 #include <cstring>
-#include <string>
-#include <string_view>
 #include <filesystem>
 #include <future>
+#include <iostream>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <string_view>
 #include <thread>
 
-#include "loguru.hpp"
 #include "co/all.h"
+#include "loguru.hpp"
 #include "mytime.hpp"
 #include "nlohmann/json.hpp"
 #include <yaml-cpp/yaml.h>
 
 #include <fmt/core.h>
 #include <fmt/ranges.h>
-struct YamlParam
-{
+
+#include "log.hpp"
+
+struct YamlParam {
   std::string userName;
   std::string passWord;
   std::string serialNum;
@@ -37,4 +39,7 @@ struct YamlParam
   std::string sendPLCPort;
   std::string rcvPLCPort;
 };
+
+ extern quill::Logger *logger;
+
 #endif // MAIN_HPP
