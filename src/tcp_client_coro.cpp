@@ -19,11 +19,11 @@ void conn_cb(tcp::Connection conn) {
             conn.reset(3000);
             break;
         } else {
-            LOG_S(INFO) << "server recv " << fastring(buf, r);
-            LOG_S(INFO) << "server send pong";
+            //LOG_S(INFO) << "server recv " << fastring(buf, r);
+            //LOG_S(INFO) << "server send pong";
             r = conn.send("pong", 4);
             if (r <= 0) {
-                LOG_S(INFO) << "server send error: " << conn.strerror();
+                //LOG_S(INFO) << "server send error: " << conn.strerror();
                 conn.reset(3000);
                 break;
             }
@@ -39,22 +39,22 @@ void client_fun() {
     char buf[8] = { 0 };
 
     for (int i = 0; i < 3; ++i) {
-        LOG_S(INFO) << "client send ping";
+        //LOG_S(INFO) << "client send ping";
         int r = c.send("ping", 4);
         if (r <= 0) {
-            LOG_S(INFO) << "client send error: " << c.strerror();
+            //LOG_S(INFO) << "client send error: " << c.strerror();
             break;
         }
 
         r = c.recv(buf, 8);
         if (r < 0) {
-            LOG_S(INFO) << "client recv error: " << c.strerror();
+            //LOG_S(INFO) << "client recv error: " << c.strerror();
             break;
         } else if (r == 0) {
-            LOG_S(INFO) << "server close the connection";
+            //LOG_S(INFO) << "server close the connection";
             break;
         } else {
-            LOG_S(INFO) << "client recv " << fastring(buf, r) << '\n';
+            //LOG_S(INFO) << "client recv " << fastring(buf, r) << '\n';
             co::sleep(500);
         }
     }
@@ -73,22 +73,22 @@ void client_with_pool() {
     char buf[8] = { 0 };
 
     for (int i = 0; i < 3; ++i) {
-        LOG_S(INFO) << "client send ping";
+        //LOG_S(INFO) << "client send ping";
         int r = c->send("ping", 4);
         if (r <= 0) {
-            LOG_S(INFO) << "client send error: " << c->strerror();
+            //LOG_S(INFO) << "client send error: " << c->strerror();
             break;
         }
 
         r = c->recv(buf, 8);
         if (r < 0) {
-            LOG_S(INFO) << "client recv error: " << c->strerror();
+            //LOG_S(INFO) << "client recv error: " << c->strerror();
             break;
         } else if (r == 0) {
-            LOG_S(INFO) << "server close the connection";
+            //LOG_S(INFO) << "server close the connection";
             break;
         } else {
-            LOG_S(INFO) << "client recv " << fastring(buf, r) << '\n';
+            //LOG_S(INFO) << "client recv " << fastring(buf, r) << '\n';
             co::sleep(500);
         }
     }

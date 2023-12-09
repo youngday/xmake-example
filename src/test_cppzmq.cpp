@@ -23,19 +23,19 @@ void SubscriberThread2(zmq::context_t *ctx);
 void PublisherThread(zmq::context_t *ctx)
 {
     //  Prepare publisher
-    LOG_S(INFO) << "pub" << endl;
+    //LOG_S(INFO) << "pub" << endl;
     zmq::socket_t publisher(*ctx, zmq::socket_type::pub);
-    LOG_S(INFO) << "pub" << endl;
+    //LOG_S(INFO) << "pub" << endl;
     publisher.bind("tcp://127.0.0.1:9872");
-    LOG_S(INFO) << "pub" << endl;
+    //LOG_S(INFO) << "pub" << endl;
     // Give the subscribers a chance to connect, so they don't lose any messages
     std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
-    LOG_S(INFO) << "pub" << endl;
+    //LOG_S(INFO) << "pub" << endl;
     // Tojson();
     User u;
     string data = R"({\"id\":12345, \"name\":\"test\"})";
-    LOG_S(INFO) << "data json:" << data;
+    //LOG_S(INFO) << "data json:" << data;
 
     int cnt = 0;
     while (true)
@@ -51,8 +51,8 @@ void PublisherThread(zmq::context_t *ctx)
         njson jstr;
         jstr["id"] = u.id;
         jstr["name"] = u.name;
-        LOG_S(INFO) << "json:" << jstr.dump() << endl;
-        LOG_S(INFO) << "json size:" << jstr.dump().size() << endl;
+        //LOG_S(INFO) << "json:" << jstr.dump() << endl;
+        //LOG_S(INFO) << "json size:" << jstr.dump().size() << endl;
 
         // send string
         string msg = jstr.dump();
@@ -92,7 +92,7 @@ void SubscriberThread1(zmq::context_t *ctx)
     while (1)
     {
         // Receive all parts of the message
-        LOG_S(INFO) << "sub1" << endl;
+        //LOG_S(INFO) << "sub1" << endl;
         std::vector<zmq::message_t> recv_msgs;
         zmq::recv_result_t result =
             zmq::recv_multipart(subscriber, std::back_inserter(recv_msgs));
@@ -116,14 +116,14 @@ void SubscriberThread2(zmq::context_t *ctx)
     while (1)
     {
         // Receive all parts of the message
-        LOG_S(INFO) << "pub2" << endl;
+        //LOG_S(INFO) << "pub2" << endl;
         std::vector<zmq::message_t> recv_msgs;
         zmq::recv_result_t result =
             zmq::recv_multipart(subscriber, std::back_inserter(recv_msgs));
         assert(result && "recv failed");
         assert(*result == 1);
 
-        LOG_S(INFO) << "Thread3: [" << recv_msgs[0].to_string()
+        //LOG_S(INFO) << "Thread3: [" << recv_msgs[0].to_string()
                     << std::endl;
     }
 }
@@ -131,7 +131,7 @@ void SubscriberThread2(zmq::context_t *ctx)
 int cppzmq_app()
 {
 
-    LOG_S(INFO) << "cppzmq_app." << endl;
+    //LOG_S(INFO) << "cppzmq_app." << endl;
     /*
      * No I/O threads are involved in passing messages using the inproc transport.
      * Therefore, if you are using a ØMQ context for in-process messaging only you
@@ -141,22 +141,22 @@ int cppzmq_app()
      */
     zmq::context_t ctx(1); // ctx(0); 0 for inproc ,1 for tcp
 
-    LOG_S(INFO) << "cppzmq_app." << endl;
+    //LOG_S(INFO) << "cppzmq_app." << endl;
     auto thread1 = std::async(std::launch::async, PublisherThread, &ctx);
-    LOG_S(INFO) << "pub create." << endl;
+    //LOG_S(INFO) << "pub create." << endl;
     // Give the publisher a chance to bind, since inproc requires it
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
-    LOG_S(INFO) << "delay." << endl;
+    //LOG_S(INFO) << "delay." << endl;
     auto thread2 = std::async(std::launch::async, SubscriberThread1, &ctx);
-    LOG_S(INFO) << "sub1 create." << endl;
+    //LOG_S(INFO) << "sub1 create." << endl;
     auto thread3 = std::async(std::launch::async, SubscriberThread2, &ctx);
-    LOG_S(INFO) << "sub2 create." << endl;
+    //LOG_S(INFO) << "sub2 create." << endl;
     thread1.wait();
     thread2.wait();
     thread3.wait();
 
-    LOG_S(INFO) << "cppzmq_app end ." << endl;
+    //LOG_S(INFO) << "cppzmq_app end ." << endl;
     /*
      * Output:
      *   An infinite loop of a mix of:

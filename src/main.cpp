@@ -13,20 +13,11 @@ extern int tcp_client_coro(int argc, char **argv);
 int main(int argc, char *argv[]) {
   auto time_str = mylocal_time();
 
-  filesystem::path folder_path = "./log/";
-  filesystem::create_directory(folder_path)
-      ? LOG_S(INFO) << "mkdir sucess." << folder_path << endl
-      : LOG_S(INFO) << "dir exist." << folder_path << endl;
+  filesystem::path folder_path = "./log_quill/";
+  filesystem::create_directory(folder_path);
 
-  string logfilename = "log/everything-" + time_str + ".log";
-  loguru::init(argc, argv);
-  loguru::add_file(logfilename.c_str(), loguru::Append,
-                   loguru::Verbosity_MAX); // Verbosity_INFO  Verbosity_MAX
-  // Only log INFO, WARNING, ERROR and FATAL to "latest_readable.log":
-  logfilename = "log/latest_readable-" + time_str + ".log";
-  loguru::add_file(logfilename.c_str(), loguru::Truncate,
-                   loguru::Verbosity_INFO);
-  LOG_S(INFO) << fmt::format("Starting at {}!\n", time_str);
+  
+
 
 
   // xtensor_test();

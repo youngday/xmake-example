@@ -12,12 +12,12 @@ inline    static void init(void);
 
 client_test::client_test(/* args */)
 {
-    LOG_S(INFO) << "client_test";
+    //LOG_S(INFO) << "client_test";
 }
 void client_test::init(void)
 {
 
-    LOG_S(INFO) << "client_test init.";
+    //LOG_S(INFO) << "client_test init.";
 }
 
 client_test::~client_test()

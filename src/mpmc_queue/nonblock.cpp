@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     loguru::init(argc, argv);
     filesystem::path folder_path = "./log/";
-    filesystem::create_directory(folder_path) ? LOG_S(INFO) << "mkdir sucess." << folder_path << endl : LOG_S(INFO) << "dir exist." << folder_path << endl;
+    filesystem::create_directory(folder_path) ? //LOG_S(INFO) << "mkdir sucess." << folder_path << endl : //LOG_S(INFO) << "dir exist." << folder_path << endl;
 
     string logfilename = "log/everything-" + time_str + ".log";
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     logfilename = "log/latest_readable-" + time_str + ".log";
     loguru::add_file(logfilename.c_str(), loguru::Truncate,
                      loguru::Verbosity_INFO);
-    LOG_S(INFO) << fmt::format("Starting at {}!\n", time_str);
+    //LOG_S(INFO) << fmt::format("Starting at {}!\n", time_str);
 
     moodycamel::ConcurrentQueue<int> q;
 
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
        for (int i = 0; i != 100; ++i) {
             std::this_thread::sleep_for(std::chrono::milliseconds(5000));
             q.enqueue(i);
-            LOG_S(INFO) << "send i= "<<i << endl;
+            //LOG_S(INFO) << "send i= "<<i << endl;
         } });
 
     std::thread consumer([&]()
@@ -48,11 +48,11 @@ int main(int argc, char *argv[])
             bool found=q.try_dequeue(item);
             if (found)
             {
-                 LOG_S(INFO) << "rcv i= "<<item << endl; 
+                 //LOG_S(INFO) << "rcv i= "<<item << endl; 
             }
             
            
-            LOG_S(INFO) << "run i= "<<i << endl; 
+            //LOG_S(INFO) << "run i= "<<i << endl; 
              std::this_thread::sleep_for(std::chrono::milliseconds(1000));
             //assert(item == i);
             
@@ -62,6 +62,6 @@ int main(int argc, char *argv[])
     consumer.join();
 
     assert(q.size_approx() == 0);
-    LOG_S(INFO) << "end" << endl;
+    //LOG_S(INFO) << "end" << endl;
     return 0;
 }

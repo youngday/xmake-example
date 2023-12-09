@@ -22,7 +22,7 @@ int sqlite_orm_app(void);
 int sqlite_orm_app()
 {
 
-  LOG_S(INFO) << "sqlite orm  start ."<< "\n";
+  //LOG_S(INFO) << "sqlite orm  start ."<< "\n";
  database_create();
   return 0;
 }

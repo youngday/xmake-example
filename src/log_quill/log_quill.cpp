@@ -12,10 +12,10 @@ inline quill::Logger *logger;
 void quill_init_test(quill::Logger *logger) {
 
   auto time_str = mylocal_time();
-  std::filesystem::path folder_path = "./log_quil/";
+  std::filesystem::path folder_path = "./log_quill/";
   std::filesystem::create_directory(folder_path);
 
-  string filename = "log_quil/quill-" + time_str + ".log";
+  string filename = "log_quill/quill-" + time_str + ".log";
 
   // Start the logging backend thread
   quill::start();

@@ -67,7 +67,15 @@ int main() {
   auto xa_read = xt::load_npy<double>(file_path);
   std::vector<double> vec_read(xa_read.size());
   std::copy(xa_read.cbegin(), xa_read.cend(), vec_read.begin());
-  std::cout << fmt::format("vec_read:\n{0}", vec_read)<<std::endl;
+
+  // std::cout << fmt::format("vec_read:\n{0}", vec_read)<<std::endl;
+  std::cout << fmt::format("vec_read:\n")<<std::endl;
+ std::cout<<xa_read<<std::endl;
+//   std::vector<int> v = {1, 2, 3};
+// fmt::print("{}", fmt::join(v, ", "));
+
+
+
 #endif
   return 0;
 }

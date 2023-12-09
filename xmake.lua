@@ -3,7 +3,7 @@ set_languages("c++20")
 add_rules("mode.debug", "mode.release")
 
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.7.0", "fmt 10.0.0", "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1")
+add_requires( "yaml-cpp 0.7.0", "fmt 10.1.0", "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1")
 
 add_requires("nlohmann_json 3.11.2")
 -- add_requires("opencv 4.6.0","sqlite3 3.39.0")
