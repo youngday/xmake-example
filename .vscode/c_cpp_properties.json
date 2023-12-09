@@ -5,6 +5,7 @@
       "${workspaceFolder}/include",
       "~/.xmake/packages/n/nlohmann_json/v3.11.2/d0ab6439a26046eab271bd900a8ea21b/include",
       "~/.xmake/packages/c/coost/v3.0.0/e477bba71d244fb991955f2e89d7e5fb/include",
+      "~/.xmake/packages/q/quill/3.3.1/9fd8af30543040ca9294d87e72f236f6/include",
       "~/.xmake/packages"
     ],
     "myCompilerPath": "/usr/local/bin/gcc-11"

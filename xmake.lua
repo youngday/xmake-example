@@ -65,9 +65,11 @@ target("xtensor")
     add_packages("xtensor") 
     add_packages("xtensor-blas") 
     
-target("log_quill_backtrace")
+target("log_quill")
     set_kind("binary")
-    add_files("src/log_quill/example_backtrace.cpp")
+    add_files("src/log_quill/log_quill.cpp")
+    -- add_files("src/log_quill/example_daily_file_rotation.cpp")
+    
     add_packages("quill")
 
 --     add_executable(quill_example_backtrace example_backtrace.cpp)
@@ -118,8 +120,6 @@ target("log_quill_backtrace")
 -- add_executable(quill_example_custom_handler example_custom_handler.cpp)
 -- target_link_libraries(quill_example_custom_handler quill)
 
--- add_executable(quill_example_daily_file_rotation example_daily_file_rotation.cpp)
--- target_link_libraries(quill_example_daily_file_rotation quill)
 
 -- add_executable(quill_example_file_rotation example_file_rotation.cpp)
 -- target_link_libraries(quill_example_file_rotation quill)

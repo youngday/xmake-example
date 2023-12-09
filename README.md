@@ -33,7 +33,7 @@ lock-free concurrentqueue, cppzmq,loguru matplot,csv
 |-|-|-|-|
 |frame|coost|boost, asio, libhv|lightweight frame work|
 |argparse|co/flag|argparse, cli++|cmd line param parser|
-|log|loguru(add quill)|co/log fmtlog glog spdlog|lightweight log|
+|log|quill|co/log fmtlog loguru |lightweight log|
 |csv|rapidcsv|csv2 |csv parser|
 |queue|concurrentqueue|mpmcqueue|lock-free concurrent queue|
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
