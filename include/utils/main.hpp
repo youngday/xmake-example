@@ -40,6 +40,6 @@ struct YamlParam {
   std::string rcvPLCPort;
 };
 
- extern quill::Logger *logger;
+
 
 #endif // MAIN_HPP
