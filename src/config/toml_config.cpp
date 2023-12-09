@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
         strTest.emplace_back() = config["str_array"]["test"][i].value_or(""sv); // array to vector
     }
 
-    // std::cout<<fmt::format("strTest vector:{0}!", strTest);
+    std::cout<<fmt::format("strTest vector:{0}!", strTest);
 
     // // use a visitor to iterate over heterogenous data
     // config.for_each([](auto &key, auto &value)

@@ -3,21 +3,21 @@ set_languages("c++20")
 add_rules("mode.debug", "mode.release")
 
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.7.0", "fmt 10.1.0", "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1")
+add_requires( "yaml-cpp 0.7.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1","fmt 10.1.1")
 
 add_requires("nlohmann_json 3.11.2")
 -- add_requires("opencv 4.6.0","sqlite3 3.39.0")
 add_requires("matplotplusplus 1.2.0")
 add_requires("xtensor 0.24.3","xtensor-blas 0.20.0","xtl 0.7")
--- add_requires("drogon 1.8.2")
+add_requires("drogon 1.8.2")
+add_packages("quill")
+add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt")
 
 
 add_includedirs("include","src/utils", "include/utils")
 add_includedirs("include/concurrentqueue")
 
-add_packages("yaml-cpp", "fmt","coost","toml++","nlohmann_json")
 
-add_packages("quill")
 
 add_files("src/utils/*.cpp")
 

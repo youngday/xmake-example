@@ -17,7 +17,7 @@
 #include "nlohmann/json.hpp"
 #include <yaml-cpp/yaml.h>
 
-
+#define FMT_HEADER_ONLY//NOTE: need add 
 #include <fmt/format.h>
 #include <fmt/core.h>
 #include <fmt/ranges.h>
