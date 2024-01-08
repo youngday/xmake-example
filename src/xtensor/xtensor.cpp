@@ -1,21 +1,21 @@
 #include "main.hpp"
 
-#include "xtensor-blas/xblas.hpp"
-#include "xtensor-blas/xlapack.hpp"
-#include "xtensor-blas/xlinalg.hpp"
-#include "xtensor/xio.hpp"
-#include "xtensor/xview.hpp"
 #include <algorithm>
+#include <xtensor-blas/xblas.hpp>
+#include <xtensor-blas/xlapack.hpp>
+#include <xtensor-blas/xlinalg.hpp>
 #include <xtensor/xarray.hpp>
 #include <xtensor/xbuilder.hpp>
 #include <xtensor/xcsv.hpp>
+#include <xtensor/xio.hpp>
 #include <xtensor/xnpy.hpp>
+#include <xtensor/xpad.hpp>
 #include <xtensor/xtensor.hpp>
+#include <xtensor/xview.hpp>
 
 using std::cout, std::endl, std::string, std::this_thread::sleep_for;
 using namespace std::chrono_literals;
 using namespace std;
-
 
 // using namespace xt=xtensor;
 // https://xtensor.readthedocs.io/en/latest/container.html
@@ -51,8 +51,8 @@ int main() {
   // Outputs {{1, 2, 3, 7, 8}, {4, 5, 6, 0, 10}}
 #endif
 
-// npy file read and write to xt::array and vector  
-#if 1
+// npy file read and write to xt::array and vector
+#if 0
   std::ofstream out_ofs;
   std::string file_path = "data.npy";
   out_ofs.open(file_path);
@@ -74,8 +74,88 @@ int main() {
 //   std::vector<int> v = {1, 2, 3};
 // fmt::print("{}", fmt::join(v, ", "));
 
+#endif
 
+  int row = 720;
+  int col = 1280;
+
+  // int row = 480;
+  // int col = 848;
+
+  // int row = 3;
+  // int col = 4;
+
+  xt::xarray<double> px =
+      xt::linspace<double>(0.0, col - 1, col); // start end steps
+  xt::xarray<double> py =
+      xt::linspace<double>(0.0, (row - 1) * 2, row); // start end steps
+  // cout<<"px:\n"<<px<<endl;
+  // cout<<"py:\n"<<py<<endl;
+
+  // y=kx+b;
+
+#if 0
+auto [py_2d,px_2d]=xt::meshgrid(py,px);
+cout<<"px_2d:\n"<<px_2d<<endl;
+cout<<"py_2d:\n"<<py_2d<<endl;
+#else
+  px.reshape({1, col});
+  py.reshape({row, 1});
+
+  // cout<<"px:\n"<<px<<endl;
+  // cout<<"py:\n"<<py<<endl;
+
+  xt::xarray<double> px_2d = xt::tile(px, {row, 1});
+  xt::xarray<double> py_2d = xt::tile(py, {1, col});
 
 #endif
+
+  // cout << "px_2d:\n" << px_2d << endl;
+  // cout << "py_2d:\n" << py_2d << endl;
+
+#if 0
+
+auto beforeTime = std::chrono::high_resolution_clock::now();
+	
+  xt::xarray<double> p_3d = xt::stack(xtuple(px_2d, py_2d), 0);
+
+  cout << "p_3d:\n" << p_3d << endl;
+  cout << "p_3d_z:\n" << xt::view(p_3d, xt::all(), 1, 1) << endl;
+  cout << "p_3d_z:\n" << xt::view(p_3d, xt::all(), 2, 3) << endl;
+
+
+
+	auto afterTime = std::chrono::high_resolution_clock::now();
+	double duration_millsecond = std::chrono::duration<double, std::milli>(afterTime - beforeTime).count();
+	std::cout << duration_millsecond << "毫秒" << std::endl;
+
+#else
+  auto beforeTime = std::chrono::high_resolution_clock::now();
+
+  xt::xtensor<double, 3> p_3d = xt::zeros<double>({2, row, col});
+  {
+    auto afterTime = std::chrono::high_resolution_clock::now();
+    double duration_millsecond =
+        std::chrono::duration<double, std::milli>(afterTime - beforeTime)
+            .count();
+    std::cout << duration_millsecond << "毫秒" << std::endl;
+  }
+  xt::view(p_3d, 0, xt::all(), xt::all()) = px_2d;
+  xt::view(p_3d, 1, xt::all(), xt::all()) = py_2d;
+  {
+    auto afterTime = std::chrono::high_resolution_clock::now();
+    double duration_millsecond =
+        std::chrono::duration<double, std::milli>(afterTime - beforeTime)
+            .count();
+    std::cout << duration_millsecond << "毫秒" << std::endl;
+  }
+
+  cout << "p_3d:\n" << p_3d << endl;
+
+  // cout << "p_3d_z:\n" << xt::view(p_3d, xt::all(), 1, 1) << endl;
+  // cout << "p_3d_z:\n" << xt::view(p_3d, xt::all(), 2, 3) << endl;
+
+#endif
+
   return 0;
 }
