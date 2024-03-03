@@ -1,22 +1,33 @@
+set_xmakever("2.8.1")
 set_project("xmake-example")
 set_languages("c++20")
 add_rules("mode.debug", "mode.release")
 
+add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.7.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1","fmt 10.1.1")
-
-add_requires("nlohmann_json 3.11.2")
--- add_requires("opencv 4.6.0","sqlite3 3.39.0")
-add_requires("matplotplusplus 1.2.0")
+add_requires( "yaml-cpp 0.7.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1","fmt 10.1.1","nlohmann_json 3.11.2")
+add_requires("cinatra 0.8.0")
+add_requires("async_simple 1.2")
 add_requires("xtensor 0.24.3","xtensor-blas 0.20.0","xtl 0.7")
-add_requires("drogon 1.8.2")
-add_packages("quill")
-add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt")
+add_requires("matplotplusplus 1.2.0")
+
+-- for ffmpeg c lib, require and link static lib
+-- https://github.com/xmake-io/xmake/issues/4089
+
+add_requires("libavutil")
+add_requires("libavcodec")
+add_requires("libavformat")
+add_requires("libavdevice")
+add_requires("libavfilter")
+add_requires("libswscale")
+add_requires("libswresample")
+add_requires("libpostproc")
 
 
-add_includedirs("include","src/utils", "include/utils")
-add_includedirs("include/concurrentqueue")
+add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","cinatra","async_simple")
 
+add_includedirs("src/utils")
+add_includedirs("src/concurrentqueue")
 
 
 add_files("src/utils/*.cpp")
@@ -34,7 +45,7 @@ target("serial")
     add_linkdirs("lib")
     add_links("CppLinuxSerial")
     add_files("src/serial/FlowControl.cpp")
-    add_includedirs("include", "include/utils","include/CppLinuxSerial")
+    add_includedirs("src/CppLinuxSerial")
 
 -- noblock mpmc_block mpmc_bulk
 target("mpmc_nonblock")
@@ -71,4 +82,12 @@ target("xtensor")
 target("log_quill")
     set_kind("binary")
     add_files("src/log_quill/log_quill.cpp")
+
+target("ffmpeg")
+    set_kind("binary")
+    add_files("src/streamer/*.cpp")
+    add_includedirs("src/streamer")
+    -- add_packages("ffmpeg", {public = true})
+    add_packages("opencv")
+    add_links("avfilter", "avdevice", "avformat", "avcodec", "swscale", "swresample", "avutil","postproc")
 

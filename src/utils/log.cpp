@@ -2,11 +2,11 @@
 
 using std::cout, std::endl, std::string;
 
-// inline quill::Logger *logger;
-void quill_init(quill::Logger *logger);
+
+void quill_init();
 
 
-void quill_init(quill::Logger *logger) {
+void quill_init() {
 
   auto time_str = mylocal_time();
   std::filesystem::path folder_path = "./log_quill/";
@@ -58,7 +58,7 @@ void quill_init(quill::Logger *logger) {
   LOG_DEBUG(logger, "This is a log debug example {}", 4);
   LOG_INFO(logger, "This is a log info example {}", 5);
   LOG_WARNING(logger, "This is a log warning example {}", 9);
-  LOG_ERROR(logger, "This is a log error example {}", 10);
-  LOG_CRITICAL(logger, "This is a log critical example {}", 11);
+  // LOG_ERROR(logger, "This is a log error example {}", 10);
+  // LOG_CRITICAL(logger, "This is a log critical example {}", 11);
 }
 

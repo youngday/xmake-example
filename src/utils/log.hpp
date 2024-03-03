@@ -5,4 +5,4 @@
 #include <main.hpp>
 #include <toml++/toml.h>
 
-extern void quill_init(quill::Logger *logger);
+extern void quill_init();

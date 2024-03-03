@@ -24,7 +24,7 @@
 #include <fmt/ranges.h>
 
 #include "log.hpp"
-
+inline quill::Logger *logger;
 struct YamlParam {
   std::string userName;
   std::string passWord;

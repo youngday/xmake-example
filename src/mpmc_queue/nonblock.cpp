@@ -1,67 +1,50 @@
 
-#include <thread>
-#include <chrono>
-#include <iostream>
 #include "blockingconcurrentqueue.h"
 #include "concurrentqueue.h"
-#include "pthread.h"
 #include "main.hpp"
-using std::cout, std::endl;
+#include "pthread.h"
+#include <chrono>
+#include <iostream>
+#include <thread>
 
 using namespace std;
-int main(int argc, char *argv[])
-{
+using std::cout, std::endl;
+int main(int argc, char *argv[]) {
+  quill_init();
+  auto time_str = mylocal_time();
 
-    auto time_str = mylocal_time();
+  LOG_INFO(logger, "Starting at {}!\n", time_str);
+  moodycamel::ConcurrentQueue<int> q;
 
-    loguru::init(argc, argv);
-    filesystem::path folder_path = "./log/";
-    filesystem::create_directory(folder_path) ? //LOG_S(INFO) << "mkdir sucess." << folder_path << endl : //LOG_S(INFO) << "dir exist." << folder_path << endl;
+  std::thread producer([&]() {
 
-    string logfilename = "log/everything-" + time_str + ".log";
+    quill::detail::set_thread_name("producer");
+    for (int i = 0; i != 100; ++i) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+      q.enqueue(i);
+      // LOG_S(INFO) << "send i= "<<i << endl;
+    }
+  });
 
-    loguru::add_file(logfilename.c_str(), loguru::Append,
-                     loguru::Verbosity_MAX); // Verbosity_INFO  Verbosity_MAX
-    // Only log INFO, WARNING, ERROR and FATAL to "latest_readable.log":
-    logfilename = "log/latest_readable-" + time_str + ".log";
-    loguru::add_file(logfilename.c_str(), loguru::Truncate,
-                     loguru::Verbosity_INFO);
-    //LOG_S(INFO) << fmt::format("Starting at {}!\n", time_str);
+  std::thread consumer([&]() {
+    quill::detail::set_thread_name("consumer");
+    for (int i = 0; i != 10000; ++i) {
+      int item;
 
-    moodycamel::ConcurrentQueue<int> q;
+      bool found = q.try_dequeue(item);
+      if (found) {
+        // LOG_S(INFO) << "rcv i= "<<item << endl;
+      }
 
-    std::thread producer([&]()
-                         {
-                            loguru::set_thread_name("producer");
-       for (int i = 0; i != 100; ++i) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-            q.enqueue(i);
-            //LOG_S(INFO) << "send i= "<<i << endl;
-        } });
+      // LOG_S(INFO) << "run i= "<<i << endl;
+      std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      // assert(item == i);
+    }
+  });
+  producer.join();
+  consumer.join();
 
-    std::thread consumer([&]()
-                         {
-                             loguru::set_thread_name("consumer");
-        for (int i = 0; i != 10000; ++i) {
-            int item;
-            
-            bool found=q.try_dequeue(item);
-            if (found)
-            {
-                 //LOG_S(INFO) << "rcv i= "<<item << endl; 
-            }
-            
-           
-            //LOG_S(INFO) << "run i= "<<i << endl; 
-             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-            //assert(item == i);
-            
-          
-        } });
-    producer.join();
-    consumer.join();
-
-    assert(q.size_approx() == 0);
-    //LOG_S(INFO) << "end" << endl;
-    return 0;
+  assert(q.size_approx() == 0);
+  // LOG_S(INFO) << "end" << endl;
+  return 0;
 }
