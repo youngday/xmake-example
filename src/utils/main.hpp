@@ -13,6 +13,7 @@
 #include <thread>
 #include<chrono>
 
+#include "atomic_queue/atomic_queue.h"
 #include "co/all.h"
 #include "mytime.hpp"
 #include "nlohmann/json.hpp"

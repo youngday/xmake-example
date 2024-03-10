@@ -11,9 +11,7 @@ using namespace std;
 using std::cout, std::endl;
 int main(int argc, char *argv[]) {
   quill_init();
-  auto time_str = mylocal_time();
-
-  LOG_INFO(logger, "Starting at {}!\n", time_str);
+  LOG_INFO(logger, "Starting at {}!\n", mylocal_time());
   moodycamel::ConcurrentQueue<int> q;
 
   std::thread producer([&]() {

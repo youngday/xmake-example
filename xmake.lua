@@ -5,9 +5,9 @@ add_rules("mode.debug", "mode.release")
 
 add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.7.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1","fmt 10.1.1","nlohmann_json 3.11.2")
-add_requires("cinatra 0.8.0")
-add_requires("async_simple 1.2")
+add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1","fmt 10.1.1",
+"nlohmann_json 3.11.2","atomic_queue 1.5.0","concurrentqueue 1.0.4")
+add_requires("cinatra 0.8.0","async_simple 1.2")
 add_requires("xtensor 0.24.3","xtensor-blas 0.20.0","xtl 0.7")
 add_requires("matplotplusplus 1.2.0")
 
@@ -24,12 +24,11 @@ add_requires("libswresample")
 add_requires("libpostproc")
 
 
-add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","cinatra","async_simple")
+add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","cinatra","async_simple","atomic_queue","concurrentqueue")
+
+add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
 
 add_includedirs("src/utils")
-add_includedirs("src/concurrentqueue")
-
-
 add_files("src/utils/*.cpp")
 
 -- flag argparse cli  cmdline
@@ -48,9 +47,21 @@ target("serial")
     add_includedirs("src/CppLinuxSerial")
 
 -- noblock mpmc_block mpmc_bulk
-target("mpmc_nonblock")
+target("concurrentqueue")
     set_kind("binary")
-    add_files("src/mpmc_queue/nonblock.cpp")
+    add_files("src/concurrentqueue/nonblock.cpp")
+
+-- add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
+target("atomic_queue")
+    set_kind("binary")
+    add_files("src/atomic_queue/example.cc")
+
+target("atomic_queue_block")
+    set_kind("binary")
+    add_files("src/atomic_queue/block.cpp")
+target("atomic_queue_nonblock")
+    set_kind("binary")
+    add_files("src/atomic_queue/nonblock.cpp")
 
 target("matplot")
     set_kind("binary")

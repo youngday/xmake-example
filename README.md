@@ -52,7 +52,7 @@ video_fname = std::string("0");
 |log|quill|co/log fmtlog loguru |lightweight log|
 |csv|rapidcsv|csv2 |csv parser|
 |structor data file|npy|csv |share numpy files|
-|queue|concurrentqueue|mpmcqueue|lock-free concurrent queue|
+|queue|concurrentqueue|atomic_queue|lock-free concurrent queue|
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
 |udp/tcp|coost|| udp tcp http with coroutine|
 |http/websocket|cinatra|cpr|http websocket|
