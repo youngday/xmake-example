@@ -32,8 +32,6 @@ add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,
 add_includedirs("src/utils")
 add_files("src/utils/*.cpp")
 
-add_includedirs("src/async_simple")
-add_includedirs("src/async_simple/executors")
 add_includedirs("src/")
 
 -- flag argparse cli  cmdline
