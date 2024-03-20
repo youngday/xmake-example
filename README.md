@@ -54,8 +54,8 @@ video_fname = std::string("0");
 |structor data file|npy|csv |share numpy files|
 |queue|concurrentqueue|atomic_queue|lock-free concurrent queue|
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
-|udp/tcp|coost|| udp tcp http with coroutine|
-|http/websocket|cinatra|cpr|http websocket|
+|tcp/http|coost,async_simple||tcp http with coroutine|
+|http/websocket|cinatra,drogon|cpr|http websocket|
 |zero mq|cppzmq||message queue between other language|
 |plot|matplotplusplus|cvplot|plot 2D/3D ,depend on gnuplot|
 |json|nlohmann_json|co::Json,rapidjson|co::Json output fastring,not std::string,rapidson ,not update often|
