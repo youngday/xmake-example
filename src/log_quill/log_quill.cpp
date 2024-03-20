@@ -7,7 +7,6 @@
 
 using std::cout, std::endl, std::string;
 
-inline quill::Logger *logger;
 
 void quill_init_test(quill::Logger *logger) {
 

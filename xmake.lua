@@ -7,8 +7,8 @@ add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
 add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","quill 3.3.1","fmt 10.1.1",
 "nlohmann_json 3.11.2","atomic_queue 1.5.0","concurrentqueue 1.0.4")
-add_requires("cinatra 0.8.0","async_simple 1.2")
-add_requires("xtensor 0.24.3","xtensor-blas 0.20.0","xtl 0.7")
+add_requires("drogon 1.9.1")
+add_requires("xtensor 0.24.7","xtensor-blas 0.20.0","xtl 0.7")
 add_requires("matplotplusplus 1.2.0")
 
 -- for ffmpeg c lib, require and link static lib
@@ -24,7 +24,7 @@ add_requires("libswresample")
 add_requires("libpostproc")
 
 
-add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","cinatra","async_simple","atomic_queue","concurrentqueue")
+add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","drogon","atomic_queue","concurrentqueue")
 
 add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
 
@@ -79,10 +79,15 @@ target("async")
     set_kind("binary")
     add_files("src/async/async.cpp")
     add_packages("nlohmann_json")
+    
+    -- drogon
 target("http_file_upload")
     set_kind("binary")
     add_files("src/http/file_upload/file_upload.cc")
-    add_packages("drogon")
+target("websocket_client")
+    set_kind("binary")
+    add_files("src/http/file_upload/file_upload.cc")
+   
 
 target("xtensor")
     set_kind("binary")
