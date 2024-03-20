@@ -10,7 +10,7 @@ add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.1","
 add_requires("drogon 1.9.1")
 add_requires("xtensor 0.24.7","xtensor-blas 0.20.0","xtl 0.7")
 add_requires("matplotplusplus 1.2.0")
-add_requires("async_simple 1.3","asio 1.29.0")
+add_requires("async_simple 1.3","asio 1.29.0","cinatra 0.8.0")
 
 -- for ffmpeg c lib, require and link static lib
 -- https://github.com/xmake-io/xmake/issues/4089
@@ -26,7 +26,7 @@ add_requires("libpostproc")
 
 
 add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","drogon","atomic_queue","concurrentqueue")
-add_packages("async_simple","asio")
+add_packages("async_simple","asio","cinatra")
 add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
 
 add_includedirs("src/utils")
@@ -103,10 +103,13 @@ target("block_echo_server")
     target("CountChar")
     set_kind("binary")
     add_files("src/async_simple/CountChar.cpp")
-    target("ReadFiles")
+target("ReadFiles")
     set_kind("binary")
     add_files("src/async_simple/ReadFiles.cpp")
 
+target("cinatra")
+    set_kind("binary")
+    add_files("src/cinatra/main.cpp")
 
 --     -- drogon
 -- target("http_file_upload")
