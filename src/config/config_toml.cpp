@@ -19,11 +19,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  // get key-value pairs
-  std::string_view library_name = config["library"]["name"].value_or(""sv);
-  std::string_view library_author =
-      config["library"]["authors"][0].value_or(""sv);
-  int64_t depends_on_cpp_version = config["dependencies"]["cpp"].value_or(0);
+
   vector<string> strTest;
   for (size_t i = 0; i < config["str_array"]["test"].as_array()->size(); i++) {
     strTest.emplace_back() =

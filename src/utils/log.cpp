@@ -1,17 +1,14 @@
 #include "log.hpp"
+#include <fstream>
 
 using std::cout, std::endl, std::string;
-
-
 void quill_init();
-
 
 void quill_init() {
 
   auto time_str = mylocal_time();
-  std::filesystem::path folder_path = "./log_quill/";
-  std::filesystem::create_directory(folder_path);
 
+  std::filesystem::create_directory("./log_quill/");
   string filename = "log_quill/quill-" + time_str + ".log";
 
   // Start the logging backend thread
@@ -33,7 +30,7 @@ void quill_init() {
   std::shared_ptr<quill::Handler> stdout_handler = quill::stdout_handler();
   // Set a custom formatter for this handler
   stdout_handler->set_pattern("%(ascii_time) [%(process)] [%(thread)] "
-                              "%(logger_name) - %(message)", // format
+                              "%(logger_name) %(fileline:<28) - %(message)", // format
                               "%Y-%m-%d %H:%M:%S.%Qms",      // timestamp format
                               quill::Timezone::GmtTime); // timestamp's timezone
   // Enable console colours on the handler
@@ -52,13 +49,12 @@ void quill_init() {
   // quill::flush();
 
   // Log to both handlers
-  LOG_TRACE_L3(logger, "This is a log trace l3 example {}", 1);
-  LOG_TRACE_L2(logger, "This is a log trace l2 example {} {}", 2, 2.3);
-  LOG_TRACE_L1(logger, "This is a log trace l1 example {}", 3);
+  // LOG_TRACE_L3(logger, "This is a log trace l3 example {}", 1);
+  // LOG_TRACE_L2(logger, "This is a log trace l2 example {} {}", 2, 2.3);
+  // LOG_TRACE_L1(logger, "This is a log trace l1 example {}", 3);
   LOG_DEBUG(logger, "This is a log debug example {}", 4);
   LOG_INFO(logger, "This is a log info example {}", 5);
   LOG_WARNING(logger, "This is a log warning example {}", 9);
   // LOG_ERROR(logger, "This is a log error example {}", 10);
   // LOG_CRITICAL(logger, "This is a log critical example {}", 11);
 }
-
