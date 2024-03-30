@@ -6,10 +6,10 @@
 #include "sqlite.hpp"
 
 using namespace ormpp;
-const char *password = "";
-const char *ip = "127.0.0.1";
-const char *username = "root";
-const char *db = "test_ormppdb.sqlite";
+const std::string password = "";
+const std::string ip = "127.0.0.1";
+const std::string username = "root";
+const std::string db = "test_ormppdb.sqlite";
 
 struct person {
   std::optional<std::string> name;
@@ -18,6 +18,7 @@ struct person {
 };
 REGISTER_AUTO_KEY(person, id)
 REFLECTION(person, id, name, age)
+// REFLECTION_WITH_NAME(person, "t_person", id, name, age)
 
 struct student {
   std::string name;
@@ -35,12 +36,12 @@ int main(int argc, char *argv[]) {
   LOG_INFO(logger, "Starting at {}!\n", mylocal_time());
 
   dbng<sqlite> sqlite;
-  sqlite.connect(db);
-  sqlite.create_datatable<person>(ormpp_auto_key{"id"});
-  sqlite.create_datatable<student>(ormpp_auto_key{"id"});
+  sqlite.connect(db.c_str());
+  // sqlite.create_datatable<person>(ormpp_auto_key{"id"});
+  // sqlite.create_datatable<student>(ormpp_auto_key{"id"});
 
-  // sqlite.create_datatable<person>();
-  // sqlite.create_datatable<student>();
+  sqlite.create_datatable<person>();
+  sqlite.create_datatable<student>();
 
   {
     sqlite.delete_records<person>();
@@ -48,6 +49,7 @@ int main(int argc, char *argv[]) {
     sqlite.insert<person>({"purecpp2", 6});
     sqlite.insert<person>({"purecpp3", 6});
     auto vec = sqlite.query<person>();
+    //  auto vec = sqlite.query<person>("name='purecpp2'", "order by age desc");
     for (auto &[name, age, id] : vec) {
       std::cout << id << ", " << *name << ", " << *age << "\n";
     }
@@ -59,7 +61,7 @@ int main(int argc, char *argv[]) {
     // create  insert
     sqlite.insert<student>({"purecpp1", 11, 1});
     sqlite.insert<student>({"purecpp2", 12, 2});
-    sqlite.insert<student>({"purecpp3", 13, 3});
+    sqlite.insert<student>({"purecpp2", 13, 3});
     sqlite.insert<student>({"purecpp3", 14, 4});
     {
       // Read Retrieve query
@@ -80,7 +82,7 @@ int main(int argc, char *argv[]) {
     }
 
     {
-      auto vec = sqlite.query<student>("age=3", "order by id desc", "limit 1");
+      auto vec = sqlite.query<student>("age=13", "order by id desc", "limit 1");
       for (auto &[name, age, id] : vec) {
         std::cout << id << ", " << name << ", " << age << "\n";
       }

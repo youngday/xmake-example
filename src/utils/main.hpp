@@ -13,11 +13,6 @@
 #include <thread>
 #include<chrono>
 
-// #include "pthread.h"
-
-
-
-
 #include "atomic_queue/atomic_queue.h"
 #include "co/all.h"
 #include "mytime.hpp"
