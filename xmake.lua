@@ -8,7 +8,8 @@ add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:share
 add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.2","quill 3.6.0","fmt 10.2.1",
 "nlohmann_json 3.11.2","atomic_queue 1.5.0","concurrentqueue 1.0.4")
 add_requires("async_simple 1.3","asio 1.29.0","cinatra 0.8.0","srpc 0.10.2 ")
-add_requires("xtensor 0.24.7","xtensor-blas 0.20.0","xtl 0.7")
+add_requires("ormpp 0.1.1 ", "sqlite3 3.45")
+add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
 add_requires("matplotplusplus 1.2.0")
 
 
@@ -26,7 +27,9 @@ add_requires("libpostproc")
 
 
 add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","atomic_queue","concurrentqueue")
+add_packages("xtensor","xtensor-blas","xtl","xsimd")
 add_packages("async_simple","asio","cinatra","srpc")
+add_packages("ormpp","sqlite3")
 add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
 
 add_includedirs("src/utils")
@@ -34,10 +37,10 @@ add_files("src/utils/*.cpp")
 
 add_includedirs("src/")
 
--- flag argparse cli  cmdline
-target("flag_cli")
+target("ormpp")
     set_kind("binary")
-    add_files("src/flag/flag_cli.cpp")
+    add_files("src/ormpp/main.cpp")
+
 -- config log
 target("config_toml")
     set_kind("binary")
@@ -118,11 +121,6 @@ target("cinatra")
 --     add_files("src/drogon/file_upload/file_upload.cc")
 
 -- srpc  rpc(proto,msgpack,json)
-target("srpc_pb_server")
-    set_kind("binary")
-    add_files("src/srpc/tutorial-01-srpc_pb_server.cc")
-    add_files("src/srpc/echo_pb.proto", {rules = "protobuf.cpp", proto_rootdir = "."}) -- 这里用dot
-    -- add_deps("proto")
 
 
 target("xtensor")

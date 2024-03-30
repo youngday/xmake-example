@@ -61,3 +61,4 @@ video_fname = std::string("0");
 |json|nlohmann_json|co::Json,rapidjson|co::Json output fastring,not std::string,rapidson ,not update often|
 |format|fmt|cout|print vector directly,with LOG_S(INFO)<< fmt::format("vector data:{}",data),#include "fmt/core.h",#include "fmt/ranges.h"|
 |stream|ffmpeg||video streamer|
+|database orm|ormpp||database orm|

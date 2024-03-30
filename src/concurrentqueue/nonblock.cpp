@@ -1,11 +1,4 @@
-
-#include "blockingconcurrentqueue.h"
-#include "concurrentqueue.h"
 #include "main.hpp"
-#include "pthread.h"
-#include <chrono>
-#include <iostream>
-#include <thread>
 
 using namespace std;
 using std::cout, std::endl;
