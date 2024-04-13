@@ -4,6 +4,30 @@
     {
       "type": "lldb",
       "request": "launch",
+      "name": "implot_csv",
+      "program": "${workspaceFolder}/build/linux/x86_64/debug/implot_csv",
+      "args": ["4"],
+      "cwd": "${workspaceFolder}/build/linux/x86_64/debug/"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "implot_static",
+      "program": "${workspaceFolder}/build/linux/x86_64/debug/implot_static",
+      "args": ["4"],
+      "cwd": "${workspaceFolder}/build/linux/x86_64/debug/"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "implot_dynamic",
+      "program": "${workspaceFolder}/build/linux/x86_64/debug/implot_dynamic",
+      "args": ["4"],
+      "cwd": "${workspaceFolder}/build/linux/x86_64/debug/"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
       "name": "ormpp",
       "program": "${workspaceFolder}/build/linux/x86_64/debug/ormpp",
       "args": ["4"],

@@ -57,8 +57,11 @@ video_fname = std::string("0");
 |tcp/http|coost,async_simple||tcp http with coroutine|
 |http/websocket|cinatra,drogon|cpr|http websocket|
 |zero mq|cppzmq||message queue between other language|
-|plot|matplotplusplus|cvplot|plot 2D/3D ,depend on gnuplot|
+|2d/3d static plot|matplotplusplus|cvplot|plot 2D/3D static ,depend on gnuplot|
+|2d dynamic implot|implot|cvplot|plot 2D,dynamic depend imgui|
 |json|nlohmann_json|co::Json,rapidjson|co::Json output fastring,not std::string,rapidson ,not update often|
 |format|fmt|cout|print vector directly,with LOG_S(INFO)<< fmt::format("vector data:{}",data),#include "fmt/core.h",#include "fmt/ranges.h"|
 |stream|ffmpeg||video streamer|
 |database orm|ormpp||database orm|
+
+⏰

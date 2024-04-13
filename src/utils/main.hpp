@@ -14,6 +14,8 @@
 #include<chrono>
 
 #include "atomic_queue/atomic_queue.h"
+#include "blockingconcurrentqueue.h"
+#include "concurrentqueue.h"
 #include "co/all.h"
 #include "mytime.hpp"
 #include "nlohmann/json.hpp"
