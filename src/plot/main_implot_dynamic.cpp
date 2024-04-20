@@ -15,10 +15,10 @@ struct ImPlotDemo : App {
     }
     int bar_data[11] = {i, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100};
     float x_data[1000] = {
-        i,
+        (float)i,
     };
     float y_data[1000] = {
-        i*10,
+        (float)i*10,
     };
 
     ImGui::Begin("My Window");

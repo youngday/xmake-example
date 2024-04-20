@@ -7,8 +7,8 @@ add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
 add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.2","quill 3.6.0","fmt 10.2.1",
 "nlohmann_json 3.11.2","atomic_queue 1.5.0","concurrentqueue 1.0.4")
-add_requires("async_simple 1.3","asio 1.29.0","cinatra 0.8.0")
-add_requires("ormpp 0.1.1 ", "sqlite3 3.45")
+add_requires("async_simple 1.3","asio 1.29.0","cinatra 0.8.9","libaio 0.3.113")
+add_requires("ormpp 0.1.1 ", "sqlite3 3.45.0+300")
 add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
 add_requires("matplotplusplus 1.2.0")--gnuplot 2d/3d
 add_requires("imgui 1.90.4", {configs = {glfw= true,opengl3 = true,sdl2 = true}})
@@ -29,7 +29,7 @@ add_requires("libpostproc")
 
 add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","atomic_queue","concurrentqueue")
 add_packages("xtensor","xtensor-blas","xtl","xsimd")
-add_packages("async_simple","asio","cinatra")
+add_packages("async_simple","asio","cinatra","libaio")
 add_packages("ormpp","sqlite3")
 
 add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
