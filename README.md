@@ -55,7 +55,7 @@ video_fname = std::string("0");
 |queue|concurrentqueue|atomic_queue|lock-free concurrent queue|
 |serial port|cpplinuxserial|asio,cserialport,libserial|ws|
 |tcp/http|coost||tcp http with coroutine|
-|http/websocket|cinatra,drogon|cpr|http websocket|
+|http/websocket|drogon|cpr|http websocket|
 |zero mq|cppzmq||message queue between other language|
 |2d/3d static plot|matplotplusplus|cvplot|plot 2D/3D static ,depend on gnuplot|
 |2d dynamic implot|implot|cvplot|plot 2D,dynamic depend imgui|
