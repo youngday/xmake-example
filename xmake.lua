@@ -13,7 +13,7 @@ add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
 add_requires("matplotplusplus 1.2.0")--gnuplot 2d/3d
 add_requires("imgui 1.90.4", {configs = {glfw= true,opengl3 = true,sdl2 = true}})
 add_requires("glad 0.1.36","nativefiledialog-extended 1.1.1","cxxopts 3.2.1","libcurl 8.5.0")
-
+add_requires("libhv 1.3.2")
 -- for ffmpeg c lib, require and link static lib
 -- https://github.com/xmake-io/xmake/issues/4089
 
@@ -30,6 +30,7 @@ add_requires("libpostproc")
 add_packages("yaml-cpp", "coost","toml++","nlohmann_json","fmt","quill","atomic_queue","concurrentqueue")
 add_packages("xtensor","xtensor-blas","xtl","xsimd")
 add_packages("drogon")
+add_packages("libhv")
 add_packages("ormpp","sqlite3")
 
 add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
@@ -89,6 +90,15 @@ target("websocket_client")
 target("websocket_server")
     set_kind("binary")
     add_files("src/drogon/websocket_server/WebSocketServer.cc")
+
+target("hv_websocket_client")
+    set_kind("binary")
+    add_files("src/hv_websocket/websocket_client_test.cpp")
+target("hv_websocket_server")
+    set_kind("binary")
+    add_files("src/hv_websocket/websocket_server_test.cpp")
+
+
 -- srpc  rpc(proto,msgpack,json)
 
 
