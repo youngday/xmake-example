@@ -117,3 +117,14 @@ xmake g --pkg_searchdirs=/xxx
 
 ```
 
+## clangd 
+
+
+
+## compile_commands.json for clangd
+
+
+
+```sh
+bear -- xmake  -b implot_csv
+```

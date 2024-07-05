@@ -1,7 +1,9 @@
 set_xmakever("2.8.5")
 set_project("xmake-example")
-set_languages("c++23")
+set_languages("c++20")
 add_rules("mode.debug", "mode.release")
+add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})
+
 
 add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
@@ -57,9 +59,13 @@ target("serial")
     add_includedirs("src/CppLinuxSerial")
 
 -- noblock mpmc_block mpmc_bulk
-target("concurrentqueue")
+target("queue_nonblock")
     set_kind("binary")
     add_files("src/concurrentqueue/nonblock.cpp")
+
+target("queue_block")
+    set_kind("binary")
+    add_files("src/concurrentqueue/block.cpp")
 
 -- add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
 target("atomic_queue")

@@ -2,6 +2,7 @@
 
 #include "main.hpp"
 #include "rapidcsv.h"
+#include "implot.h"
 #include <cmath>
 
 #include <algorithm>
