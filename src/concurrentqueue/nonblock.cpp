@@ -1,7 +1,6 @@
 #include "main.hpp"
-
+#include "concurrentqueue.h"
 using namespace std;
-using std::cout, std::endl;
 int main(int argc, char *argv[]) {
   quill_init();
   LOG_INFO(logger, "Starting at {}!\n", mylocal_time());

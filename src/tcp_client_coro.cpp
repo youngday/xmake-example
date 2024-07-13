@@ -1,5 +1,6 @@
-#include "main.hpp"
+#pragma once
 #include "client_test.hpp"
+#include "main.hpp"
 
 DEF_string(ip, "127.0.0.1", "server ip");
 DEF_int32(port, 9988, "server port");

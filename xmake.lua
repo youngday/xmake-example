@@ -2,8 +2,9 @@ set_xmakever("2.8.5")
 set_project("xmake-example")
 set_languages("c++20")
 add_rules("mode.debug", "mode.release")
-add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})
-
+-- https://xmake.io/mirror/zh-cn/plugin/more_plugins.html
+-- add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})
+add_rules("plugin.compile_commands.autoupdate")
 
 add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})

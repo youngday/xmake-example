@@ -4,6 +4,7 @@
 #include <thread>
 // #include "concurrentqueue/blockingconcurrentqueue.h"
 #include "main.hpp"
+#include "blockingconcurrentqueue.h"
 using namespace std;
 
 int main() {

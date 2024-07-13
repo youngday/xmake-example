@@ -1,4 +1,5 @@
-#include "main.hpp"
+#pragma once
+// #include "main.hpp"
 
 class client_test
 {
@@ -7,19 +8,5 @@ private:
 public:
     client_test(/* args */);
     ~client_test();
-inline    static void init(void);
+inline    static void init();
 };
-
-client_test::client_test(/* args */)
-{
-    //LOG_S(INFO) << "client_test";
-}
-void client_test::init(void)
-{
-
-    //LOG_S(INFO) << "client_test init.";
-}
-
-client_test::~client_test()
-{
-}

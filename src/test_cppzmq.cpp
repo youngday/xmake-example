@@ -1,9 +1,11 @@
 
-
+#pragma once
+#include "main.hpp"
+#include <future>
 #include "zmq.hpp"
 #include "zmq_addon.hpp"
+#
 
-#include "main.hpp"
 
 using std::string;
 using njson = nlohmann::json;
@@ -124,7 +126,7 @@ void SubscriberThread2(zmq::context_t *ctx)
         assert(*result == 1);
 
         //LOG_S(INFO) << "Thread3: [" << recv_msgs[0].to_string()
-                    << std::endl;
+                    // << std::endl;
     }
 }
 

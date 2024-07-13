@@ -1,6 +1,6 @@
 #include "main.hpp"
-
-using std::cout, std::endl, std::string, std::this_thread::sleep_for;
+#include <future>
+using std::string, std::this_thread::sleep_for;
 using namespace std::literals;
 using std::chrono::steady_clock;
 // a non-optimized way of checking for prime numbers:

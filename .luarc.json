@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "set_xmakever",
+        "set_languages"
+    ],
+    "diagnostics.disable": [
+        "undefined-global"
+    ]
+}

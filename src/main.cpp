@@ -1,5 +1,5 @@
 #include "main.hpp"
-#include "pthread.h"
+// #include "pthread.h"
 
 using namespace std;
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
   filesystem::path folder_path = "./log_quill/";
   filesystem::create_directory(folder_path);
 
-  
+
 
 
 

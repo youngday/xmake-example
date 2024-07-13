@@ -4,14 +4,9 @@
 // file LICENSE.
 
 #include "atomic_queue/atomic_queue.h"
-
-#include <cstdint>
-#include <iostream>
-#include <thread>
-
 #include "main.hpp"
 
-using std::cout, std::endl, std::this_thread::sleep_for;
+using  std::this_thread::sleep_for;
 using namespace std::chrono_literals;
 int main() {
   quill_init();
@@ -23,7 +18,7 @@ int main() {
   unsigned constexpr CAPACITY = 1024;
 
   using Element = uint32_t; // Queue element type.
-  
+
   Element constexpr NIL = static_cast<Element>(-1);
   using Queue =atomic_queue::AtomicQueueB<Element, std::allocator<Element>, NIL>;
 
