@@ -14,8 +14,6 @@
 #include <fmt/core.h>
 #include <fmt/ranges.h>
 
-#include "quill/Quill.h"
-// #include "quill/filters/FilterBase.h"
 #include "log.hpp"
 
-inline quill::Logger *logger;
+

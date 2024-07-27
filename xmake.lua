@@ -8,7 +8,7 @@ add_rules("plugin.compile_commands.autoupdate")
 
 add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.2","quill 3.6.0","fmt 10.2.1",
+add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.2","quill 5.1.0","fmt 10.2.1",
 "nlohmann_json 3.11.2","atomic_queue 1.5.0","concurrentqueue 1.0.4")
 add_requires("libaio 0.3.113","drogon 1.9.3")
 add_requires("ormpp 0.1.1 ", "sqlite3 3.45.0+300")

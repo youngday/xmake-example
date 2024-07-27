@@ -1,5 +1,6 @@
 
 //http://www.cnitblog.com/luckydmz/archive/2020/01/07/92011.html
+#pragma once
 #include <chrono>
 #include <sstream>
 #include <iomanip>

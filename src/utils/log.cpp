@@ -1,5 +1,6 @@
 #include "log.hpp"
 #include <fstream>
+#include <iostream>
 
 using std::cout, std::endl, std::string;
 void quill_init();
@@ -11,50 +12,48 @@ void quill_init() {
   std::filesystem::create_directory("./log_quill/");
   string filename = "log_quill/quill-" + time_str + ".log";
 
-  // Start the logging backend thread
-  quill::start();
 
-  // Create a rotating file handler which rotates daily at 18:30 or when the
-  // file size reaches 2GB
-  std::shared_ptr<quill::Handler> file_handler =
-      quill::rotating_file_handler(filename, []() {
-        quill::RotatingFileHandlerConfig cfg;
-        cfg.set_rotation_time_daily("18:30");
-        cfg.set_rotation_max_file_size(2'000'000'000);
-        return cfg;
-      }());
-  // Everything is logged in the file
-  file_handler->set_log_level(quill::LogLevel::Info);
+ // Start the backend thread
+  quill::BackendOptions backend_options;
+  quill::Backend::start(backend_options);
 
-  // Get the stdout file handler
-  std::shared_ptr<quill::Handler> stdout_handler = quill::stdout_handler();
-  // Set a custom formatter for this handler
-  stdout_handler->set_pattern("%(ascii_time) [%(process)] [%(thread)] "
-                              "%(logger_name) %(fileline:<28) - %(message)", // format
-                              "%Y-%m-%d %H:%M:%S.%Qms",      // timestamp format
-                              quill::Timezone::GmtTime); // timestamp's timezone
-  // Enable console colours on the handler
-  static_cast<quill::ConsoleHandler *>(stdout_handler.get())
-      ->enable_console_colours();
+  // Console sink
+  std::string console_log_pattern =
+    "[%(time)][%(log_level)][%(logger)][%(process_id)][%(thread_name)][%(file_name):%(line_number)]-%(message)";
+  std::string console_time_format = "%Y-%m-%d %H:%M:%S.%Qms";
+  auto console_sink = quill::Frontend::create_or_get_sink<ConsoleSinkWithFormatter>(
+    "sink_id_1", console_log_pattern, console_time_format);
+  console_sink->set_log_level_filter(quill::LogLevel::Debug);
 
-  stdout_handler->set_log_level(quill::LogLevel::Info);
+  // File sink
+  std::string const file_log_pattern = "%(log_level);%(time);%(logger);%(message)";
+  std::string const file_time_format = "%Y%m%dT%H:%M:%S.%Qus";
 
-  // Create a logger using this handler
-  logger = quill::create_logger("logger", {file_handler, stdout_handler});
+  auto rotating_file_sink = quill::Frontend::create_or_get_sink<quill::RotatingFileSink>(
+    "rotating_file.log",
+    []()
+    {
+      // See RotatingFileSinkConfig for more options
+      quill::RotatingFileSinkConfig cfg;
+      cfg.set_open_mode('a');
+      cfg.set_max_backup_files(10);
+      cfg.set_rotation_time_daily("18:30");
+      cfg.set_rotation_max_file_size(1'000'000'000);
+      return cfg;
+    }());
+  rotating_file_sink->set_log_level_filter(quill::LogLevel::Debug);
 
-  // Change the LogLevel to print everything
+  // The Logger is using the file_log_pattern by default
+  // To output our custom format to the file we use our own ConsoleSinkWithFormatter that is
+  // overwriting the default format
+  logger = quill::Frontend::create_or_get_logger(
+    "logger", {std::move(console_sink), std::move(rotating_file_sink)}, file_log_pattern, file_time_format);
+
   logger->set_log_level(quill::LogLevel::Debug);
 
-  // log everything up to this point before changing the handler log level
-  // quill::flush();
+  LOG_INFO(logger, "This is a log info example {}", sizeof(std::string));
 
-  // Log to both handlers
-  // LOG_TRACE_L3(logger, "This is a log trace l3 example {}", 1);
-  // LOG_TRACE_L2(logger, "This is a log trace l2 example {} {}", 2, 2.3);
-  // LOG_TRACE_L1(logger, "This is a log trace l1 example {}", 3);
-  LOG_DEBUG(logger, "This is a log debug example {}", 4);
-  LOG_INFO(logger, "This is a log info example {}", 5);
-  LOG_WARNING(logger, "This is a log warning example {}", 9);
-  // LOG_ERROR(logger, "This is a log error example {}", 10);
-  // LOG_CRITICAL(logger, "This is a log critical example {}", 11);
+
+
+
 }
