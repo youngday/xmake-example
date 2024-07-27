@@ -15,7 +15,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(ffmpeg REQUIRED IMPORTED_TARGET libavcodec libavformat libavutil libswscale)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
-add_subdirectory(streamer)
+# add_subdirectory(streamer)
 add_executable(simple_opencv_streaming main.cpp)
 target_link_libraries(simple_opencv_streaming  streamer ${OpenCV_LIBS} PkgConfig::ffmpeg)
 
