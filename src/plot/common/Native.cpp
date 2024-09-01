@@ -113,26 +113,26 @@ struct SysDirStr {
 ///////////////////////////////////////////////////////////////////////////////
 #ifdef _WIN32
 
-const std::string& GetSysDir(SysDir dir) {
-    static SysDirStr user("USERPROFILE");
-    static SysDirStr roam("APPDATA");
-    static SysDirStr local("LOCALAPPDATA");
-    static SysDirStr temp("TEMP");
-    static SysDirStr data("PROGRAMDATA");
-    static SysDirStr files("PROGRAMFILES");
-    static SysDirStr x86("PROGRAMFILES(X86)");
-    switch (dir) {
-        case SysDir::UserProfile: return user.str; break;
-        case SysDir::AppDataRoaming: return roam.str; break;
-        case SysDir::AppDataLocal: return local.str; break;
-        case SysDir::AppDataTemp: return temp.str; break;
-        case SysDir::ProgramData: return data.str; break;
-        case SysDir::ProgramFiles: return files.str; break;
-        case SysDir::ProgramFilesX86: return x86.str; break;
-    }
-    static std::string empty = "";
-    return empty;
-}
+// const std::string& GetSysDir(SysDir dir) {
+//     static SysDirStr user("USERPROFILE");
+//     static SysDirStr roam("APPDATA");
+//     static SysDirStr local("LOCALAPPDATA");
+//     static SysDirStr temp("TEMP");
+//     static SysDirStr data("PROGRAMDATA");
+//     static SysDirStr files("PROGRAMFILES");
+//     static SysDirStr x86("PROGRAMFILES(X86)");
+//     switch (dir) {
+//         case SysDir::UserProfile: return user.str; break;
+//         case SysDir::AppDataRoaming: return roam.str; break;
+//         case SysDir::AppDataLocal: return local.str; break;
+//         case SysDir::AppDataTemp: return temp.str; break;
+//         case SysDir::ProgramData: return data.str; break;
+//         case SysDir::ProgramFiles: return files.str; break;
+//         case SysDir::ProgramFilesX86: return x86.str; break;
+//     }
+//     static std::string empty = "";
+//     return empty;
+// }
 
 bool OpenFolder(const std::string& path) {
     fs::path p(path);
@@ -167,10 +167,10 @@ void OpenEmail(const std::string& address, const std::string& subject) {
 // macOS
 ///////////////////////////////////////////////////////////////////////////////
 
-const std::string& GetSysDir(SysDir dir) {
-    static std::string todo = "TODO,SORRY";
-    return todo;
-}
+// const std::string& GetSysDir(SysDir dir) {
+//     static std::string todo = "TODO,SORRY";
+//     return todo;
+// }
 
 bool OpenFolder(const std::string& path) {
     int      anErr = 0;
@@ -215,10 +215,10 @@ static int anErr = 0;
 // Linux
 ///////////////////////////////////////////////////////////////////////////////
 
-const std::string& GetSysDir(SysDir dir) {
-    static std::string todo = "TODO,SORRY";
-    return todo;
-}
+// const std::string& GetSysDir(SysDir dir) {
+//     static std::string todo = "TODO,SORRY";
+//     return todo;
+// }
 
 bool OpenFolder(const std::string& path) {
     fs::path p(path);

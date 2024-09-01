@@ -16,7 +16,7 @@
 
 void StyeColorsApp()
 {
-    static const ImVec4 bg_dark = ImVec4(0.15f, 0.16f, 0.21f, 1.00f);
+    // static const ImVec4 bg_dark = ImVec4(0.15f, 0.16f, 0.21f, 1.00f);
     static const ImVec4 bg_mid = ImVec4(0.20f, 0.21f, 0.27f, 1.00f);
     static const ImVec4 accent_dark = ImVec4(0.292f, 0.360f, 0.594f, 1.000f);
     static const ImVec4 accent_light = ImVec4(0.409f, 0.510f, 0.835f, 1.000f);
@@ -203,7 +203,7 @@ App::App(std::string title, int w, int h, int argc, char const *argv[])
         abort();
     } 
 
-    const GLubyte* vendor = glGetString(GL_VENDOR); 
+    // const GLubyte* vendor = glGetString(GL_VENDOR); 
     const GLubyte* renderer = glGetString(GL_RENDERER); 
 
     title +=  " - ";

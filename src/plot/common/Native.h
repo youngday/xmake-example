@@ -40,7 +40,7 @@ enum SysDir {
 };
 
 /// Returns the common application data directory
-const std::string& GetSysDir(SysDir dir);
+// const std::string& GetSysDir(SysDir dir);
 
 /// Opens a folder in the native file explorer
 bool OpenFolder(const std::string& path);

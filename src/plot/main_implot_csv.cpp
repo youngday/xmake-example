@@ -39,7 +39,9 @@ struct ImPlotDemo : App {
     long long volume = doc.GetCell<long long>(4, 2);
     LOG_INFO(logger, "Read volume,data:{0}\n", volume);
     xarray<float> x = linspace(0, 50 - 1, 50);
-    LOG_INFO(logger, "Read x.size:{0},data:{1}\n", x.size(), x);
+    vector<float> vx;
+    std::copy(x.begin(),x.end(),vx.begin());
+    LOG_INFO(logger, "Read x.size:{0},data:{1}\n", x.size(), vx);
 
     // vector<double> y1 = transform(x, [](auto x) { return sin(x); });
     // vector<double> y2 = transform(x, [](auto x) { return sin(x - 0.25); });

@@ -13,7 +13,7 @@ struct ImPlotDemo : App {
     if(i>100){
         i=0;
     }
-    int bar_data[11] = {i, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100};
+    // int bar_data[11] = {i, 1, 2, 3, 4, 5, 6, 7, 8, 9, 100};
     float x_data[1000] = {
         (float)i,
     };
