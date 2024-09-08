@@ -10,16 +10,15 @@ add_rules("plugin.compile_commands.autoupdate")
 
 add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "yaml-cpp 0.8.0",  "cppzmq 4.10.0", "toml++ 3.4.0","coost 3.0.2","quill 6.1.2","fmt 11.0.2",
-"atomic_queue 1.5.0","concurrentqueue 1.0.4")
-add_requires("libaio 0.3.113","drogon 1.9.6")
-add_requires("simdjson 3.10.0")
-add_requires("ormpp 0.1.3 ", "sqlite3 3.45.0+300")
+add_requires( "simdjson 3.10.0","simdutf 5.4.15","yaml-cpp 0.8.0", "toml++ 3.4.0","quill 6.1.2","fmt 11.0.2")
+add_requires( "cppzmq 4.10.0","coost 3.0.2","atomic_queue 1.5.0","concurrentqueue 1.0.4","libhv 1.3.2")
 add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
+
+add_requires("libaio 0.3.113","drogon 1.9.6")
+add_requires("ormpp 0.1.3 ", "sqlite3 3.45.0+300")
 add_requires("matplotplusplus 1.2.0")--gnuplot 2d/3d
 add_requires("imgui 1.91.0", {configs = {glfw= true,opengl3 = true,sdl2 = true}})
 add_requires("glad 0.1.36","nativefiledialog-extended 1.1.1","cxxopts 3.2.1","libcurl 8.5.0")
-add_requires("libhv 1.3.2")
 -- for ffmpeg c lib, require and link static lib
 -- https://github.com/xmake-io/xmake/issues/4089
 
@@ -33,10 +32,10 @@ add_requires("libswresample")
 add_requires("libpostproc")
 
 
-add_packages("yaml-cpp", "coost","toml++","fmt","quill","atomic_queue","concurrentqueue","simdjson")
+add_packages( "simdjson","simdutf","yaml-cpp", "toml++","quill","fmt")
+add_packages( "cppzmq","coost","atomic_queue","concurrentqueue","libhv")
 add_packages("xtensor","xtensor-blas","xtl","xsimd")
 add_packages("drogon")
-add_packages("libhv")
 add_packages("ormpp","sqlite3")
 
 add_links("atomic") --NOTE: clang donot link atomic ,need add manually .if not ,issue:undefined reference to `__atomic_is_lock_free'
@@ -105,18 +104,13 @@ target("hv_websocket_client")
 target("hv_websocket_server")
     set_kind("binary")
     add_files("src/hv_websocket/websocket_server_test.cpp")
-
-
 -- srpc  rpc(proto,msgpack,json)
-
-
 target("xtensor")
     set_kind("binary")
     add_files("src/xtensor/xtensor.cpp")
     add_packages("xtensor") 
     add_packages("xtensor-blas") 
-    
-
+ 
 target("ffmpeg")
     set_kind("binary")
     add_files("src/streamer/*.cpp")
@@ -168,3 +162,6 @@ target("implot_csv")
     add_includedirs("src/plot/implot")
     add_includedirs("src/plot/common/Fonts")
     add_packages("imgui","glad","nativefiledialog-extended","cxxopts")
+target("base64")
+    set_kind("binary")
+    add_files("src/base64/base64.cpp")

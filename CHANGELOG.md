@@ -1,12 +1,16 @@
 # CHANGELOG
 
+## 09.08 2024
+* json,replace nlomann json by simdjson
+* add base64 lib: simdutf, simd depend
+
 ## 03.10 2024
 
 * add atomic_queue,but just send one data at once .
 * add launch file for vscode plug in of lldb.
 * add concurrentqueue package in xmake.lua.
 * add opencv to ffmpeg stream push example.
-  
+
 ## 12.9 2023
 
 add quill log lib ,to replace loguru.
@@ -26,9 +30,7 @@ add coost flag_cli cmd arg parser
 ## 2.16 2023
 
 * rapidcsv
-read datas from csv file,and plot them out. 
+read datas from csv file,and plot them out.
 
 ## 2.15 2023
 add matplotplusplus, data analyzer.
-
-

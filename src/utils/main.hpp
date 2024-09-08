@@ -7,6 +7,7 @@
 #include "co/all.h"
 #include "mytime.hpp"
 #include "simdjson.h"
+#include "simdutf.h"
 #include <yaml-cpp/yaml.h>
 #include <toml++/toml.h>
 #define FMT_HEADER_ONLY//NOTE: need add

@@ -18,13 +18,6 @@ int main(int argc, char **argv) {
 
   string j_str = cars_json.data();
   LOG_INFO(logger, "j_str:\n{0}", j_str);
-  // ondemand+++++++++++++++++++++++++++++++++++++++++++++
-  ondemand::parser parser;
-  auto doc = parser.iterate(cars_json);
-  double value =
-      doc.get_array().at(0)["tire_pressure"].get_array().at(0).get_double();
-
-  LOG_INFO(logger, "value:\n{0}", value);
 // dom vector ++++++++++++++++++++++++++++++++++++++++++++
   dom::parser dom_parser; // dom
   vector<double> vec_tire_pressure{};
