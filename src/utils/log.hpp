@@ -10,7 +10,6 @@
 #include "quill/std/UnorderedSet.h"
 #include "quill/std/Tuple.h"
 #include "quill/std/FilesystemPath.h"
-
 #include "ConsoleSinkWithFormatter.h"
 #include "quill/sinks/RotatingFileSink.h"
 

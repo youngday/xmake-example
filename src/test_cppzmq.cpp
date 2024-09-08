@@ -8,8 +8,6 @@
 
 
 using std::string;
-using njson = nlohmann::json;
-using namespace nlohmann::literals;
 struct User
 {
     int id;
@@ -50,7 +48,7 @@ void PublisherThread(zmq::context_t *ctx)
         u.id = 1230 + cnt;
         u.name = "testname";
 
-        njson jstr;
+         jstr;
         jstr["id"] = u.id;
         jstr["name"] = u.name;
         //LOG_S(INFO) << "json:" << jstr.dump() << endl;
