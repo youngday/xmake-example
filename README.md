@@ -59,7 +59,7 @@ video_fname = std::string("0");
 |zero mq|cppzmq||message queue between other language|
 |2d/3d static plot|matplotplusplus|cvplot|plot 2D/3D static ,depend on gnuplot|
 |2d dynamic implot|implot|cvplot|plot 2D,dynamic depend imgui|
-|json|simdjson|nlohmann_json|fast 25x,and use dom,ondemand deprecated|
+|json|nlohmann_json|simdjson| simdjson just parser,do not have serializer,waiting for sonic-cpp having cross fun|
 |base64|simdutf|cppcodec|simd depend|
 |format|fmt|cout|print vector directly,with LOG_S(INFO)<< fmt::format("vector data:{}",data),#include "fmt/core.h",#include "fmt/ranges.h"|
 |stream|ffmpeg||video streamer|

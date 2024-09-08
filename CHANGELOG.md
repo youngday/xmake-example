@@ -1,7 +1,7 @@
 # CHANGELOG
 
 ## 09.08 2024
-* json,replace nlomann json by simdjson
+* json,back nlomann json , simdjson just parser,not have serializer, waiting for sonic-cpp soon.(cross arm64 check)
 * add base64 lib: simdutf, simd depend
 
 ## 03.10 2024

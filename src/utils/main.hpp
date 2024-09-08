@@ -6,7 +6,7 @@
 // #include "concurrentqueue.h"
 #include "co/all.h"
 #include "mytime.hpp"
-#include "simdjson.h"
+#include "nlohmann/json.hpp"
 #include "simdutf.h"
 #include <yaml-cpp/yaml.h>
 #include <toml++/toml.h>

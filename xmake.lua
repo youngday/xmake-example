@@ -10,7 +10,7 @@ add_rules("plugin.compile_commands.autoupdate")
 
 add_requires("opencv", {system = true})
 add_requires("openssl", {alias = "openssl", configs = { options = "OpenSSL:shared=True" }})
-add_requires( "simdjson 3.10.0","simdutf 5.4.15","yaml-cpp 0.8.0", "toml++ 3.4.0","quill 6.1.2","fmt 11.0.2")
+add_requires( "nlohmann_json 3.11.3","simdutf 5.4.15","yaml-cpp 0.8.0", "toml++ 3.4.0","quill 6.1.2","fmt 11.0.2")
 add_requires( "cppzmq 4.10.0","coost 3.0.2","atomic_queue 1.5.0","concurrentqueue 1.0.4","libhv 1.3.2")
 add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
 
@@ -32,7 +32,7 @@ add_requires("libswresample")
 add_requires("libpostproc")
 
 
-add_packages( "simdjson","simdutf","yaml-cpp", "toml++","quill","fmt")
+add_packages( "nlohmann_json","simdutf","yaml-cpp", "toml++","quill","fmt")
 add_packages( "cppzmq","coost","atomic_queue","concurrentqueue","libhv")
 add_packages("xtensor","xtensor-blas","xtl","xsimd")
 add_packages("drogon")
