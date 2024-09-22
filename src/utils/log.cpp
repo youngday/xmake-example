@@ -1,4 +1,5 @@
 #include "log.hpp"
+#include "quill/Frontend.h"
 #include <fstream>
 #include <iostream>
 

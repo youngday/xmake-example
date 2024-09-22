@@ -1,7 +1,7 @@
 // Demo:   demo.cpp
 // Author: Evan Pezent (evanpezent.com)
 // Date:   3/26/2021
-
+#include "main.hpp"
 #include "App.h"
 
 struct ImPlotDemo : App {
@@ -48,6 +48,10 @@ struct ImPlotDemo : App {
 
 
 int main(int argc, char const *argv[]) {
+  quill_init();
+  auto time_str = mylocal_time();
+  LOG_INFO(logger, "Starting at {}!\n", time_str);
+
 
   ImPlotDemo app("ImPlot Demo", 1920, 1080, argc, argv);
   app.Run();

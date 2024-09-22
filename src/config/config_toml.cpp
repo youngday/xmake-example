@@ -1,6 +1,5 @@
 #include "main.hpp"
-#include <iostream>
-#include <toml++/toml.h>
+
 using namespace std;
 
 
@@ -8,7 +7,6 @@ int main(int argc, char *argv[]) {
 
   quill_init();
   auto time_str = mylocal_time();
-
   LOG_INFO(logger, "Starting at {}!\n", time_str);
 
   toml::table config;
@@ -26,7 +24,7 @@ int main(int argc, char *argv[]) {
         config["str_array"]["test"][i].value_or(""sv); // array to vector
   }
 
-  std::cout << fmt::format("strTest vector:{0}!", strTest);
+    LOG_INFO(logger,"strTest:{0}.", strTest);
 
   // // use a visitor to iterate over heterogenous data
   // config.for_each([](auto &key, auto &value)

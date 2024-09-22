@@ -6,6 +6,7 @@
 #include <cmath>
 
 #include <algorithm>
+#include <ostream>
 #include <xtensor-blas/xblas.hpp>
 #include <xtensor-blas/xlapack.hpp>
 #include <xtensor-blas/xlinalg.hpp>
@@ -39,8 +40,9 @@ struct ImPlotDemo : App {
     long long volume = doc.GetCell<long long>(4, 2);
     LOG_INFO(logger, "Read volume,data:{0}\n", volume);
     xarray<float> x = linspace(0, 50 - 1, 50);
+    // cout<<"x:"<<x<<endl;
     vector<float> vx;
-    std::copy(x.begin(),x.end(),vx.begin());
+    std::copy(x.cbegin(),x.cend(),std::back_inserter(vx));
     LOG_INFO(logger, "Read x.size:{0},data:{1}\n", x.size(), vx);
 
     // vector<double> y1 = transform(x, [](auto x) { return sin(x); });
@@ -66,7 +68,9 @@ struct ImPlotDemo : App {
 };
 
 int main(int argc, char const *argv[]) {
-  quill_init();
+    quill_init();
+  auto time_str = mylocal_time();
+  LOG_INFO(logger, "Starting at {}!\n", time_str);
   ImPlotDemo app("ImPlot Demo", 1920, 1080, argc, argv);
   app.Run();
 
