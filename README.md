@@ -63,7 +63,7 @@ video_fname = std::string("0");
 |base64|simdutf|cppcodec|simd depend|
 |format|fmt|cout|print vector directly,with LOG_S(INFO)<< fmt::format("vector data:{}",data),#include "fmt/core.h",#include "fmt/ranges.h"|
 |stream|ffmpeg||video streamer|
-|database orm|ormpp||database orm|
+|database orm|sqlite_orm||database orm|
 
 
 

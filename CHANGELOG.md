@@ -1,4 +1,7 @@
 # CHANGELOG
+## 12.21 2024
+ormpp to sqlite_orm 
+quill 6.1.2 to 7.5.0
 
 ## 09.08 2024
 * json,back nlomann json , simdjson just parser,not have serializer, waiting for sonic-cpp soon.(cross arm64 check)
