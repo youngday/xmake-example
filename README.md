@@ -57,8 +57,8 @@ video_fname = std::string("0");
 |tcp/http|coost||tcp http with coroutine|
 |websocket|drogon/libhv(cross)|(uwebsocket not in xmake)|websocket|
 |zero mq|cppzmq||message queue between other language|
-|2d/3d static plot|matplotplusplus|cvplot|plot 2D/3D static ,depend on gnuplot|
-|2d dynamic implot|implot|cvplot|plot 2D,dynamic depend imgui|
+|2D/3D plot|matplotplusplus|cvplot|plot 2D/3D static ,depend on gnuplot|
+|2D/3D implot/implot3d|implot/implot3d|cvplot|plot 2D/3D,dynamic depend imgui|
 |json|nlohmann_json|simdjson| simdjson just parser,do not have serializer,waiting for sonic-cpp having cross fun|
 |base64|simdutf|cppcodec|simd depend|
 |format|fmt|cout|print vector directly,with LOG_S(INFO)<< fmt::format("vector data:{}",data),#include "fmt/core.h",#include "fmt/ranges.h"|
