@@ -44,11 +44,11 @@ int main(int argc, char *argv[]) {
   sqlite.create_datatable<student>();
 
   {
-    sqlite.delete_records<person>();
+    sqlite.delete_records_s<person>();
     sqlite.insert<person>({"purecpp"});
     sqlite.insert<person>({"purecpp2", 6});
     sqlite.insert<person>({"purecpp3", 6});
-    auto vec = sqlite.query<person>();
+    auto vec = sqlite.query_s<person>();
     //  auto vec = sqlite.query<person>("name='purecpp2'", "order by age desc");
     for (auto &[name, age, id] : vec) {
       std::cout << id << ", " << *name << ", " << *age << "\n";
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 
   {
     // delete
-    sqlite.delete_records<student>();
+    sqlite.delete_records_s<student>();
     // create  insert
     sqlite.insert<student>({"purecpp1", 11, 1});
     sqlite.insert<student>({"purecpp2", 12, 2});
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     sqlite.insert<student>({"purecpp3", 14, 4});
     {
       // Read Retrieve query
-      auto vec = sqlite.query<student>("name='purecpp2'", "order by age desc");
+      auto vec = sqlite.query_s<student>("name='purecpp2'", "order by age desc");
       for (auto &[name, age, id] : vec) {
         std::cout << id << ", " << name << ", " << age << "\n";
       }
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
     }
 
     {
-      auto vec = sqlite.query<student>("age=13", "order by id desc", "limit 1");
+      auto vec = sqlite.query_s<student>("age=13", "order by id desc", "limit 1");
       for (auto &[name, age, id] : vec) {
         std::cout << id << ", " << name << ", " << age << "\n";
       }

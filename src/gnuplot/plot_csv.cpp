@@ -1,13 +1,19 @@
-#include <iostream>
-#include <vector>
+
+#include "main.hpp"
 #include "rapidcsv.h"
-#include <cmath>
 #include <matplot/matplot.h>
 
 using namespace std;
 
-int main()
-{
+int main() {
+
+  quill_init();
+  auto time_str = mylocal_time();
+  LOG_INFO(logger, "⏰Starting at {}!", time_str);
+  logger->flush_log();
+
+  LOG_INFO(logger, "test0");
+
   rapidcsv::Document doc("nohdr.csv", rapidcsv::LabelParams(-1, -1));
   //  rapidcsv::SeparatorParams(';'));
   vector<float> open = doc.GetColumn<float>(0);
