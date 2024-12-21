@@ -3,7 +3,7 @@
 #include <cstring>
 #include <iostream>
 #include <algorithm>  //  std::copy
-
+#include <cmath>
 // #include "atomic_queue/atomic_queue.h"
 // #include "blockingconcurrentqueue.h"
 // #include "concurrentqueue.h"
