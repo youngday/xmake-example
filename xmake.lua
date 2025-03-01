@@ -14,7 +14,7 @@ add_requires( "nlohmann_json 3.11.3","simdutf 6.2","yaml-cpp 0.8.0", "toml++ 3.4
 add_requires( "cppzmq 4.10.0","argparse 3.2","atomic_queue 1.5.0","concurrentqueue 1.0.4","libhv 1.3.3")
 add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
 
-add_requires("libaio 0.3.113","drogon 1.9.6")
+add_requires("libaio 0.3.113","drogon 1.9.8")
 add_requires("sqlite_orm 1.9 ", "sqlite3 3.45.0+300")
 add_requires("matplotplusplus 1.2.1")--gnuplot 2d/3d
 add_requires("imgui 1.91.8", {configs = {glfw= true,opengl3 = true,sdl2 = true}})
