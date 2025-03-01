@@ -8,7 +8,7 @@ extern int tcp_client();
 // extern int sqlite_orm_app();
 extern int xtensor_test();
 extern int cppzmq_app();
-extern int tcp_client_coro(int argc, char **argv);
+// extern int tcp_client_coro(int argc, char **argv);
 
 int main(int argc, char *argv[]) {
   auto time_str = mylocal_time();
@@ -16,13 +16,9 @@ int main(int argc, char *argv[]) {
   filesystem::path folder_path = "./log_quill/";
   filesystem::create_directory(folder_path);
 
-
-
-
-
   // xtensor_test();
 
-  tcp_client_coro(argc, argv);
+  // tcp_client_coro(argc, argv);
   //  for(;;){
   //   co::sleep(10000);
   //  }

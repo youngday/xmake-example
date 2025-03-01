@@ -1,4 +1,7 @@
 # CHANGELOG
+
+## 03.01 2025
+replace coost with libhv.
 ## 12.21 2024
 ormpp to sqlite_orm 
 quill 6.1.2 to 7.5.0
