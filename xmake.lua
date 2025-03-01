@@ -102,7 +102,7 @@ target("websocket_server")
     add_files("src/drogon/websocket_server/WebSocketServer.cc")
 
 
-
+-- libhv
 target("hv_udp_client")
     set_kind("binary")
     add_files("src/hv_udp/UdpClient_test.cpp")
@@ -118,6 +118,12 @@ target("hv_tcp_client_loop")
 target("hv_tcp_server")
     set_kind("binary")
     add_files("src/hv_tcp/TcpServer_test.cpp")    
+target("hv_http_client")
+    set_kind("binary")
+    add_files("src/hv_http/http_client_test.cpp")
+target("hv_http_server")
+    set_kind("binary")
+    add_files("src/hv_http/http_server_test.cpp")    
 target("hv_websocket_client")
     set_kind("binary")
     add_files("src/hv_websocket/websocket_client_test.cpp")

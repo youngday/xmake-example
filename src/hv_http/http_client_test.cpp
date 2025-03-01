@@ -7,11 +7,11 @@
  *
  */
 
-#include "requests.h"
-#include "axios.h"
+#include "hv/requests.h"
+#include "hv/axios.h"
 using namespace hv;
 
-#include "hthread.h" // import hv_gettid
+#include "hv/hthread.h" // import hv_gettid
 
 static void test_http_async_client(HttpClient* cli, int* resp_cnt) {
     printf("test_http_async_client request thread tid=%ld\n", hv_gettid());
