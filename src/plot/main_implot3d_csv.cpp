@@ -14,7 +14,6 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-#include "implot.h"
 #include "implot3d.h"
 
 #include <xtensor-blas/xblas.hpp>
@@ -96,9 +95,9 @@ int main(int argc, char const *argv[]) {
     std::cerr << "Failed to initialize GLFW" << std::endl;
     return -1;
   }
+  const char* glsl_version = "#version 130";
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
   // Create window
   GLFWwindow *window = glfwCreateWindow(800, 600, "Example", nullptr, nullptr);
@@ -120,7 +119,7 @@ int main(int argc, char const *argv[]) {
   // Setup context
   IMGUI_CHECKVERSION();
   ImGui::CreateContext();
-  ImPlot::CreateContext();
+  // ImPlot::CreateContext();
   ImPlot3D::CreateContext();
 
   // Setup style
@@ -128,7 +127,7 @@ int main(int argc, char const *argv[]) {
 
   // Setup backend
   ImGui_ImplGlfw_InitForOpenGL(window, true);
-  ImGui_ImplOpenGL3_Init("#version 330");
+  ImGui_ImplOpenGL3_Init(glsl_version);
 
   // Main loop
   while (!glfwWindowShouldClose(window)) {
@@ -161,7 +160,7 @@ int main(int argc, char const *argv[]) {
   ImGui_ImplOpenGL3_Shutdown();
   ImGui_ImplGlfw_Shutdown();
   ImPlot3D::DestroyContext();
-  ImPlot::DestroyContext();
+  // ImPlot::DestroyContext();
   ImGui::DestroyContext();
   glfwDestroyWindow(window);
   glfwTerminate();
