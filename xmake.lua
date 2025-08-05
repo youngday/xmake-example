@@ -9,12 +9,9 @@ add_rules("mode.debug", "mode.release")
 add_rules("plugin.compile_commands.autoupdate")
 
 add_requires("opencv", {system = true})
-add_requires( "nlohmann_json 3.12.0","simdutf 6.2", "toml11 4.4.0","quill 9.0.3","fmt 11.2.0","libnpy 1.0.1","argparse 3.2")
+add_requires( "nlohmann_json 3.12.0","simdutf 6.2", "toml11 4.4.0","quill 10.0.1","fmt 11.2.0","libnpy 1.0.1","argparse 3.2")
 add_requires( "concurrentqueue 1.0.4","libhv 1.3.3","cppzmq 4.10.0","drogon 1.9.10")
-add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
-add_requires("imgui 1.91.9", {configs = {glfw= true,opengl3 = true,sdl2 = true}})
-add_requires("glad 0.1.36")
-add_packages("imgui", "glad")  
+-- add_requires("xsimd 11.0.0","xtensor 0.25.0","xtensor-blas 0.20.0","xtl 0.7")
 add_packages( "nlohmann_json","simdutf", "toml11","quill","fmt","libnpy")
 add_packages( "cppzmq","concurrentqueue","libhv","drogon")
 add_requires("ffmpeg 7.1")
@@ -23,7 +20,7 @@ add_requires("sqlite_orm 1.9 ")
 
 
 
-add_packages("xtensor","xtensor-blas","xtl","xsimd")
+-- add_packages("xtensor","xtensor-blas","xtl","xsimd")
 
 add_packages("sqlite_orm")
 
@@ -123,20 +120,6 @@ target("ffmpeg")
     -- add_packages("ffmpeg", {public = true})
     add_packages("opencv")
     add_links("avfilter", "avdevice", "avformat", "avcodec", "swscale", "swresample", "avutil","postproc")
-
-target("implot3d")
-    set_kind("binary")
-    add_files("src/plot/main_implot3d.cpp")
-    add_files("src/plot/implot3d/*.cpp")
-    add_includedirs("src/plot/implot3d")
-    add_packages("imgui","glad","nativefiledialog-extended","cxxopts")
-target("implot3d_csv")
-    set_kind("binary")
-    add_files("src/plot/main_implot3d_csv.cpp")
-
-    add_files("src/plot/implot3d/*.cpp")
-    add_includedirs("src/plot/implot3d")
-    add_packages("imgui","glad","nativefiledialog-extended","cxxopts")
 
 target("base64")
     set_kind("binary")
