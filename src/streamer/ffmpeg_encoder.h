@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include<cstdint>
 
 struct AVFormatContext;
 struct AVCodec;
@@ -88,10 +89,3 @@ public:
 };
 
 #endif // FFMPEG_ENCODER_H
-
-
-
-
-
-
-

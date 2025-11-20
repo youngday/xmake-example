@@ -1,5 +1,16 @@
 # xmake-example
 
+## 网络优化
+https://xmake.io/zh/guide/package-management/network-optimization.html
+```txt
+--proxy_hosts=PROXY_HOSTS    Only enable proxy for the given hosts list, it will enable all if be unset,
+                             and we can pass match pattern to list:
+                                 e.g.
+                                 - xmake g --proxy_hosts='github.com,gitlab.*,*.xmake.io'
+                                 
+xmake g --proxy_hosts='github.com,gitlab.*,*.xmake.io'                                 
+```
+
 ## local dependent packages
 
 wei get from github and cmake or xmake ,and installed.
@@ -7,12 +18,10 @@ wei get from github and cmake or xmake ,and installed.
   at /usr/local/
 
 * cpplinuxserial
-* gnuplot ,apt install .
+* apt install .
 
 ## xmake package
 
-* matplotplusplus
-like matplotlib of python,data analyzer .
 * rapidcsv
 read datas from csv file,and plot them out.
 
@@ -22,10 +31,14 @@ udp ,tcp,http,websocket.
 
 ### other examples
 
-lock-free concurrentqueue, cppzmq, matplot,csv
+lock-free concurrentqueue, cppzmq, csv
 🐞
 
 ### ffmpeg example
+
+sudo apt update
+sudo apt install -y libavdevice-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libswresample-dev libavfilter-dev
+
 
 forked from
 
@@ -55,7 +68,6 @@ video_fname = std::string("0");
 |tcp/http|libhv|coost|tcp http with coroutine|
 |websocket|drogon/libhv(cross)|(uwebsocket not in xmake)|websocket|
 |zero mq|cppzmq||message queue between other language|
-|2D/3D plot|matplotplusplus|cvplot|plot 2D/3D static ,depend on gnuplot|
 |2D/3D implot/implot3d|implot/implot3d|cvplot|plot 2D/3D,dynamic depend imgui|
 |json|nlohmann_json|simdjson| simdjson just parser,do not have serializer,waiting for sonic-cpp having cross fun|
 |base64|simdutf|cppcodec|simd depend|
