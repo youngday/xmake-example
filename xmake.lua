@@ -19,11 +19,13 @@ add_packages("cppzmq", "concurrentqueue", "libhv")
 add_requires("ffmpeg 7.1")
 add_packages("ffmpeg")
 add_requires("sqlite_orm 1.9 ")
-
-
-
 add_packages("sqlite_orm")
 
+-- xtensor dependencies - manually configured to use system packages
+-- sudo apt install -y libxtensor-dev libxtensor-blas-dev xtl-dev
+add_includedirs("/usr/include")
+add_includedirs("/usr/include/xtensor")
+add_includedirs("/usr/include/xtl")
 
 add_includedirs("src/utils")
 add_files("src/utils/*.cpp")
@@ -100,12 +102,9 @@ target("hv_websocket_server")
 set_kind("binary")
 add_files("src/hv_websocket/websocket_server_test.cpp")
 
--- srpc  rpc(proto,msgpack,json)
--- target("xtensor")
--- set_kind("binary")
--- add_files("src/xtensor/xtensor.cpp")
--- add_packages("xtensor")
--- add_packages("xtensor-blas")
+target("xtensor")
+set_kind("binary")
+add_files("src/xtensor/xtensor.cpp")
 
 target("ffmpeg")
 set_kind("binary")

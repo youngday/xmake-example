@@ -34,8 +34,8 @@ static int encode_and_write_frame(AVCodecContext *codec_ctx, AVFormatContext *fm
         if(rescale) {
             av_packet_rescale_ts(&pkt, codec_ctx->time_base, fmt_ctx->streams[0]->time_base);
         }
-        
-        av_interleaved_write_frame(fmt_ctx, &pkt);        
+
+        av_interleaved_write_frame(fmt_ctx, &pkt);
         av_packet_unref(&pkt);
     }
 
@@ -108,7 +108,6 @@ Streamer::Streamer()
 void Streamer::cleanup()
 {
     if(out_codec_ctx) {
-        avcodec_close(out_codec_ctx);
         avcodec_free_context(&out_codec_ctx);
     }
 
